@@ -46,7 +46,8 @@ const LandingPage = () => {
           </div>
           <Link
             href="/home"
-            className="flex flex-col items-center text-white text-xs mt-9"
+            className="flex flex-col items-center text-white text-xs mt-9 "
+            style={{ color: "#60d9fa" }}
           >
             continue without sign-in
           </Link>
