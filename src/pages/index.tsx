@@ -1,5 +1,12 @@
+import LandingPage from "@/landingPage";
+
 const HomePage = () => {
-  return <div className="text-3xl text-green-600 p-2">Hello Geeks!</div>;
+  return (
+    <div>
+      {" "}
+      <LandingPage />
+    </div>
+  );
 };
 
 export default HomePage;
