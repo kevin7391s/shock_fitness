@@ -1,19 +1,32 @@
 import { useState } from "react";
+import Image from "next/image";
 
+let defaultImage = "/images/exerciseMan.jpg";
+let name = "unknown user";
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <nav className="w-full bg-gray-400 shadow">
+    <nav className="w-full bg-gray-500 " style={{ backgroundColor: "#424242" }}>
       <div className="justify-between px-4 mx-auto lg:max-w-7xl 3xl:items-center 3xl:flex 3xl:px-8">
         <div>
           <div className="flex items-center justify-between py-3 3xl:py-5 3xl:block">
-            <a href="javascript:void(0)">
-              <h2 className="text-2xl font-bold">LOGO</h2>
+            <a href="javascript:void(0)" className="flex ">
+              <Image
+                className="rounded-full border border-black border-1 mr-3"
+                src={defaultImage}
+                alt="Fitness App Logo"
+                width={50}
+                height={50}
+              />
+
+              <h2 className="flex text-xl items-center mt-2 ">
+                Hello, <p className="font-bold ml-1 text-white">{name}</p>
+              </h2>
             </a>
             <div className="3xl:hidden">
               <button
-                className="p-2 text-gray-700 rounded-3xl outline-none focus:border-gray-400 focus:border"
+                className="p-2 text-gray-700 rounded-3xl outline-none focus:border-gray-800 focus:border"
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? (
@@ -35,8 +48,8 @@ export default function NavBar() {
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
+                    stroke="white"
+                    className="w-6 h-6 "
                   >
                     <path
                       strokeLinecap="round"
@@ -56,16 +69,16 @@ export default function NavBar() {
             }`}
           >
             <ul className="items-center justify-center space-y-8 3xl:flex 3xl:space-x-6 3xl:space-y-0">
-              <li className="text-gray-600 hover:text-blue-600">
+              <li className="text-white hover:text-blue-600">
                 <a href="javascript:void(0)">Home</a>
               </li>
-              <li className="text-gray-600 hover:text-blue-600">
+              <li className="text-white hover:text-blue-600">
                 <a href="javascript:void(0)">Blog</a>
               </li>
-              <li className="text-gray-600 hover:text-blue-600">
+              <li className="text-white hover:text-blue-600">
                 <a href="javascript:void(0)">About US</a>
               </li>
-              <li className="text-gray-600 hover:text-blue-600">
+              <li className="text-white hover:text-blue-600">
                 <a href="javascript:void(0)">Contact US</a>
               </li>
             </ul>
