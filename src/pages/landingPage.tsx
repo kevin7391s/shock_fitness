@@ -15,7 +15,7 @@ const LandingPage = () => {
         className="flex flex-col items-center justify-center min-h-screen bg-black"
         style={{ backgroundColor: "#121212" }}
       >
-        <div className="ml-8">
+        <div className="ml-9">
           <Image
             src="/images/shockfitnesstransparent.png"
             alt="Fitness App Logo"
@@ -31,23 +31,20 @@ const LandingPage = () => {
           <div className="text-center mt-8">
             <Link
               href="/register"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
-              style={{ backgroundColor: "#60d9fa" }}
+              className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4"
             >
               Register
             </Link>
             <Link
               href="/login"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              style={{ backgroundColor: "#60d9fa" }}
+              className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded"
             >
               Login
             </Link>
           </div>
           <Link
             href="/home"
-            className="flex flex-col items-center text-white text-xs mt-9 "
-            style={{ color: "#60d9fa" }}
+            className="flex flex-col items-center text-white hover:text-cyan-300 text-xs mt-9 "
           >
             continue without sign-in
           </Link>
