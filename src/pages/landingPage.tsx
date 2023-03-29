@@ -29,16 +29,24 @@ const LandingPage = () => {
             <Link
               href="/register"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+              style={{ backgroundColor: "#60d9fa" }}
             >
               Register
             </Link>
             <Link
               href="/login"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              style={{ backgroundColor: "#60d9fa" }}
             >
               Login
             </Link>
           </div>
+          <Link
+            href="/home"
+            className="flex flex-col items-center text-white text-xs mt-9"
+          >
+            continue without sign-in
+          </Link>
         </div>
       </div>
     </>
