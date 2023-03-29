@@ -23,7 +23,7 @@ const LandingPage = () => {
             height={100}
           />
         </div>
-        <p className="flex flex-col items-center text-center mb-8 text-white ml-10 mr-10">
+        <p className="font-primary flex flex-col items-center text-center mb-8 text-white ml-10 mr-10">
           Track your workouts, connect with friends, and achieve your fitness
           goals.
         </p>

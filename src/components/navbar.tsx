@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 let defaultImage = "/images/exerciseMan.jpg";
-let name = "unknown user";
+let name = "Guest";
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
 
@@ -21,7 +21,8 @@ export default function NavBar() {
               />
 
               <h2 className="flex text-xl items-center mt-2 ">
-                Hello, <p className="font-bold ml-1 text-white">{name}</p>
+                Hello,{" "}
+                <p className="font-primary font-bold ml-1 text-white">{name}</p>
               </h2>
             </a>
             <div className="3xl:hidden">
