@@ -23,7 +23,7 @@ function home() {
       </div>
       <Link
         href="/login"
-        className="bg-cyan-300 hover:bg-cyan-400 text-gray-700 font-bold py-2 px-4 rounded mt-4 "
+        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-4  "
       >
         Add Cardio
       </Link>
