@@ -23,7 +23,7 @@ function home() {
       type: "Weight training",
     },
     {
-      image: "/images/boxingman.jpg",
+      image: "/images/weightlifting.jpg",
       text: "This is some overlay text.",
     },
   ];
@@ -45,13 +45,19 @@ function home() {
       </div>
       <Link
         href="/login"
-        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7  "
+        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8  "
       >
         Add Cardio
       </Link>
       <div className="static mt-7 text-center items-center">
         <Card cardData={cardData2} />
       </div>
+      <Link
+        href="/login"
+        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
+      >
+        Add Weight training
+      </Link>
     </div>
   );
 }
