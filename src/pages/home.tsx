@@ -18,7 +18,7 @@ function home() {
   ];
   const cardData2 = [
     {
-      image: "/images/heartlogo.png",
+      image: "/images/weightTraining.png",
       text: "",
       type: "Weight training",
     },
@@ -29,7 +29,7 @@ function home() {
   ];
   return (
     <div
-      className="flex flex-col items-center min-h-screen bg-black"
+      className="flex flex-col  items-center min-h-screen bg-black"
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
