@@ -44,9 +44,9 @@ const LandingPage = () => {
           </div>
           <Link
             href="/home"
-            className="flex flex-col items-center text-white hover:text-cyan-300 text-xs mt-9 "
+            className="flex flex-col items-center text-white hover:text-cyan-300 text-sm mt-9 "
           >
-            continue without sign-in
+            continue as guest
           </Link>
         </div>
       </div>
