@@ -11,36 +11,40 @@ export default function NavBar() {
       <div className="justify-between px-4 mx-auto lg:max-w-7xl 3xl:items-center 3xl:flex 3xl:px-8">
         <div>
           <div className="flex items-center justify-between py-3 3xl:py-5 3xl:block">
-            <a href="javascript:void(0)" className="flex ">
+            <a href="javascript:void(0)" className="flex ml-4 ">
               <Image
-                className="rounded-full border border-black border-1 mr-3"
+                className="rounded-full  mr-3"
                 src={defaultImage}
                 alt="Fitness App Logo"
-                width={50}
+                width={60}
                 height={50}
               />
 
-              <h2 className="flex text-xl items-center mt-2 ">
+              <h2 className=" text-md items-center mt-2 text-white ">
                 Hello,{" "}
-                <p className="font-primary font-bold ml-1 text-white">{name}</p>
+                <p className="text-lg font-primary font-bold text-white">
+                  {name}
+                </p>
               </h2>
             </a>
             <div className="3xl:hidden">
               <button
-                className="p-2 text-gray-700 rounded-3xl outline-none focus:border-gray-800 focus:border"
+                className=" p-2 text-white rounded-3xl outline-none focus:border-white focus:border"
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? (
                   <svg
-                    xmlns=""
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="white"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
                     className="w-6 h-6"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
                   >
                     <path
-                      fillRule="evenodd"
-                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clipRule="evenodd"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                     />
                   </svg>
                 ) : (
