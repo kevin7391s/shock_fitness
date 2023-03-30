@@ -14,18 +14,18 @@ export default function NavBar() {
       <div className="justify-between px-4 mx-auto lg:max-w-7xl 3xl:items-center 3xl:flex 3xl:px-8">
         <div>
           <div className="flex items-center justify-between py-3 3xl:py-5 3xl:block">
-            <a href="javascript:void(0)" className="flex ml-4 ">
+            <a href="javascript:void(0)" className="flex ml-1 ">
               <Image
                 className="rounded-full  mr-3"
                 src={defaultImage}
                 alt="Fitness App Logo"
-                width={60}
+                width={50}
                 height={50}
               />
 
-              <h2 className=" text-md items-center mt-2 text-white ">
+              <h2 className=" text-xs items-center mt-2 text-white ">
                 Hello,{" "}
-                <p className="text-lg font-primary font-bold text-white">
+                <p className="text-sm font-primary font-bold text-white">
                   {name}
                 </p>
               </h2>
