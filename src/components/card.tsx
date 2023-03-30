@@ -1,19 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function Card() {
+export default function Card({ cardData }) {
   const [cardState, setCardState] = useState(0);
-
-  const cardData = [
-    {
-      image: "/images/heartlogo.png",
-      text: "",
-    },
-    {
-      image: "/images/boxingman.jpg",
-      text: "This is some overlay text.",
-    },
-  ];
 
   const handleClick = () => {
     setCardState((cardState + 1) % cardData.length);
@@ -24,7 +13,9 @@ export default function Card() {
       className="flex flex-col items-center relative w-64 h-80 mx-auto  overflow-hidden bg-gray-200 justify-center rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer  "
       style={{ backgroundColor: "#424242" }}
     >
-      <p className="text-2xl content-start mb-10 ">Cardio</p>
+      <p className="text-2xl content-start mb-10 text-white ">
+        {cardData[cardState].type}
+      </p>
       <Image
         src={cardData[cardState].image}
         alt="Card Image"
@@ -33,7 +24,7 @@ export default function Card() {
         height={100}
         onClick={handleClick}
       />
-      <p className="mt-5">Click icon</p>
+      <p className="mt-5 text-white">Click icon</p>
       {cardData[cardState].text && (
         <div className="absolute inset-0 flex items-center justify-center p-4 text-white bg-black bg-opacity-50  ">
           {cardData[cardState].text}
