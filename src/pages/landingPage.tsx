@@ -30,7 +30,7 @@ const LandingPage = () => {
         <div className="items-center">
           <div className="text-center mt-8">
             <Link
-              href="/register"
+              href="/signUp"
               className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4"
             >
               Register
