@@ -6,11 +6,11 @@ export default function Card() {
 
   const cardData = [
     {
-      image: "/images/image1.jpg",
+      image: "/images/heartlogo.png",
       text: "",
     },
     {
-      image: "/images/image2.jpg",
+      image: "/images/",
       text: "This is some overlay text.",
     },
   ];
@@ -21,15 +21,19 @@ export default function Card() {
 
   return (
     <div
-      className="relative w-64 h-64 mx-auto mt-6 overflow-hidden bg-white rounded-lg shadow-md cursor-pointer"
-      onClick={handleClick}
+      className="flex flex-col items-center relative w-64 h-80 mx-auto  overflow-hidden bg-gray-200 justify-center rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer  "
+      style={{ backgroundColor: "#424242" }}
     >
+      <p className="text-2xl content-start mb-10 ">Cardio</p>
       <Image
         src={cardData[cardState].image}
         alt="Card Image"
-        layout="fill"
-        objectFit="cover"
+        className="mt-5 mb-10"
+        width={100}
+        height={100}
+        onClick={handleClick}
       />
+      <p className="mt-5">Click here</p>
       {cardData[cardState].text && (
         <div className="absolute inset-0 flex items-center justify-center p-4 bg-black bg-opacity-50 text-white">
           {cardData[cardState].text}
