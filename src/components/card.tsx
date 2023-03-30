@@ -10,7 +10,7 @@ export default function Card() {
       text: "",
     },
     {
-      image: "/images/",
+      image: "/images/boxingman.jpg",
       text: "This is some overlay text.",
     },
   ];
@@ -33,10 +33,18 @@ export default function Card() {
         height={100}
         onClick={handleClick}
       />
-      <p className="mt-5">Click here</p>
+      <p className="mt-5">Click icon</p>
       {cardData[cardState].text && (
-        <div className="absolute inset-0 flex items-center justify-center p-4 bg-black bg-opacity-50 text-white">
+        <div className="absolute inset-0 flex items-center justify-center p-4 text-white bg-black bg-opacity-50  ">
           {cardData[cardState].text}
+          <Image
+            src={cardData[cardState].image}
+            alt="Card Image"
+            className="absolute inset-0 object-cover w-full h-full "
+            width={100}
+            height={100}
+            onClick={handleClick}
+          />
         </div>
       )}
     </div>
