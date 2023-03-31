@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 function signUp() {
+  const router = useRouter();
   const handleSignup = () => {};
   return (
     <div
@@ -14,13 +16,17 @@ function signUp() {
       >
         <div className="flex flex-col items-center">
           <Image
-            src="/images/shockfitnesstransparent.png"
+            src="/images/register.svg"
             alt="Fitness App Logo"
-            className=""
-            width={600}
+            className="mb-10 mt-10"
+            width={200}
             height={100}
           />
         </div>
+        <div className="relative">
+          <div className="bg-cyan-300 h-1 w-full mr-1  shadow-md mb-8 opacity"></div>
+        </div>
+
         <p className="ml-4 text-sm text-white mb-1 ">Username</p>
         <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
           <input
@@ -64,7 +70,17 @@ function signUp() {
             //onChange={({ target }) => setUsername(target.value)}
             //value={username}
           />
+          <div className="flex flex-col items-center">
+            <button
+              type="submit"
+              className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8"
+            >
+              Submit
+            </button>
+          </div>
         </form>
+
+        <div className="bg-cyan-300 h-1 w-full mr-1  shadow-md mt-8"></div>
       </div>
     </div>
   );
