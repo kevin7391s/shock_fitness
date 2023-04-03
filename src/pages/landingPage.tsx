@@ -4,8 +4,13 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const LandingPage = () => {
+  const router = useRouter();
+  const handlePush = (where: string) => {
+    router.push(where);
+  };
   return (
     <>
       <Head>
@@ -29,12 +34,13 @@ const LandingPage = () => {
         </p>
         <div className="items-center">
           <div className="text-center mt-8">
-            <Link
-              href="/signUp"
+            <button
+              onClick={() => handlePush("/signUp")}
               className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4"
             >
               Register
-            </Link>
+            </button>
+
             <Link
               href="/login"
               className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded"
