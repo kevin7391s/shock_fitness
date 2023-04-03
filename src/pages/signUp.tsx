@@ -4,7 +4,9 @@ import { useRouter } from "next/router";
 
 function signUp() {
   const router = useRouter();
-  const handleSignup = () => {};
+  const handleSignup = () => {
+    router.push("/login");
+  };
   return (
     <div
       className="flex flex-col items-center h-screen bg-black "
@@ -34,6 +36,7 @@ function signUp() {
             type="text"
             placeholder="Enter Username"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            name="username"
             //onChange={({ target }) => setUsername(target.value)}
             //value={username}
           />
@@ -45,6 +48,7 @@ function signUp() {
             type="text"
             placeholder="Enter name"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            name="fullname"
             //onChange={({ target }) => setUsername(target.value)}
             //value={username}
           />
@@ -56,6 +60,7 @@ function signUp() {
             type="email"
             placeholder="Enter Email"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            name="email"
             //onChange={({ target }) => setUsername(target.value)}
             //value={username}
           />
@@ -67,6 +72,7 @@ function signUp() {
             type="password"
             placeholder="Enter Password"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            name="password"
             //onChange={({ target }) => setUsername(target.value)}
             //value={username}
           />
