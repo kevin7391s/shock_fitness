@@ -3,41 +3,33 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { auth, firestore } from "../lib/firebase.js";
+import { auth } from "../lib/firebase.js";
 
 function Login() {
   const router = useRouter();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const isInvalid = username === "" || password === "";
+  const isInvalid = email === "" || password === "";
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     setError("");
 
     try {
-      const usernameDoc = await getDoc(doc(firestore, "usernames", username));
-      if (usernameDoc.exists()) {
-        const userRef = doc(firestore, "users", usernameDoc.data().uid);
-        const userSnapshot = await getDoc(userRef);
-        const userEmail = userSnapshot.data().email;
-
-        await signInWithEmailAndPassword(auth, userEmail, password);
-        router.push("/");
-      } else {
-        setError("Invalid username or password");
-      }
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push("/home");
     } catch (error) {
       setError(error.message);
     }
   };
-
   return (
     <div className="flex flex-col items-center h-screen bg-black">
-      <div className="flex flex-col relative w-4/5 h-4/5 mx-auto overflow-hidden bg-gray-200 rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20">
+      <div
+        className="flex flex-col relative w-4/5 h-4/5 mx-auto overflow-hidden bg-gray-200 rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20"
+        style={{ backgroundColor: "#424242" }}
+      >
         <div className="flex flex-col items-center">
           <Image
             src="/images/shockfitnesstransparent.png"
@@ -50,15 +42,15 @@ function Login() {
         </div>
         {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
         <form onSubmit={handleLogin} method="POST" className="ml-3 mr-3">
-          <p className="ml-4 text-sm text-white mb-1">Username</p>
+          <p className="ml-4 text-sm text-white mb-1">Email</p>
           <input
-            aria-label="Enter your Username"
+            aria-label="Enter your Email"
             type="text"
-            placeholder="Enter Username"
+            placeholder="Enter Email"
             className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="username"
-            onChange={({ target }) => setUsername(target.value)}
-            value={username}
+            onChange={({ target }) => setEmail(target.value)}
+            value={email}
           />
           <p className="ml-4 text-sm text-white mb-1">Password</p>
           <input
