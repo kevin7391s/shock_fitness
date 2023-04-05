@@ -1,21 +1,13 @@
+//imports
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import {
-  doc,
-  setDoc,
-  getFirestore,
-  getDoc,
-  collection,
-} from "firebase/firestore";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc, getDoc, collection } from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase.js";
 
 function signUp() {
+  //state values
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [fullname, setFullname] = useState("");
@@ -24,9 +16,12 @@ function signUp() {
   const [error, setError] = useState("");
   const isInvalid = password == "" || email == "";
 
+  // function to check and send data to firestore
   const handleSignup = async (event: React.FormEvent) => {
+    //set error to blank
     event.preventDefault();
     setError("");
+    // if username does not exist and has complete form, add user to firestore
     try {
       const usernameDoc = await getDoc(doc(firestore, "usernames", username));
       if (usernameDoc.exists()) {
@@ -45,16 +40,20 @@ function signUp() {
           fullname,
           email,
         });
-
+        // if all is correct, push user to login page to login to home page
         router.push("/login");
       }
     } catch (error) {
+      // if error occurs, set everything back to empty strings
+      setUsername("");
       setFullname("");
       setEmail("");
       setPassword("");
       setError(error.message);
     }
   };
+
+  // return the form and input fields
   return (
     <div
       className="flex flex-col items-center h-screen bg-black "
