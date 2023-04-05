@@ -1,12 +1,59 @@
-import React from "react";
+//imports
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc, getDoc, collection } from "firebase/firestore";
+import { auth, firestore } from "../lib/firebase.js";
 
 function signUp() {
+  //state values
   const router = useRouter();
-  const handleSignup = () => {
-    router.push("/login");
+  const [username, setUsername] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const isInvalid = password == "" || email == "";
+
+  // function to check and send data to firestore
+  const handleSignup = async (event: React.FormEvent) => {
+    //set error to blank
+    event.preventDefault();
+    setError("");
+    // if username does not exist and has complete form, add user to firestore
+    try {
+      const usernameDoc = await getDoc(doc(firestore, "usernames", username));
+      if (usernameDoc.exists()) {
+        setError("Username is already taken");
+      } else {
+        const { user } = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        // Save the user's additional information (username and fullname) to Firestore
+        const usersRef = collection(firestore, "users");
+        const userDoc = doc(usersRef, user.uid);
+        await setDoc(userDoc, {
+          username,
+          fullname,
+          email,
+        });
+        // if all is correct, push user to login page to login to home page
+        router.push("/login");
+      }
+    } catch (error) {
+      // if error occurs, set everything back to empty strings
+      setUsername("");
+      setFullname("");
+      setEmail("");
+      setPassword("");
+      setError(error.message);
+    }
   };
+
+  // return the form and input fields
   return (
     <div
       className="flex flex-col items-center h-screen bg-black "
@@ -18,13 +65,15 @@ function signUp() {
       >
         <div className="flex flex-col items-center">
           <Image
-            src="/images/register.svg"
+            src="/images/register.png"
             alt="Fitness App Logo"
             className="mb-10 mt-10"
             width={200}
-            height={100}
+            height={40}
+            priority={true}
           />
         </div>
+        {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
         <div className="relative">
           <div className="bg-cyan-300 h-1 w-full mr-1  shadow-md mb-8 opacity"></div>
         </div>
@@ -37,8 +86,8 @@ function signUp() {
             placeholder="Enter Username"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="username"
-            //onChange={({ target }) => setUsername(target.value)}
-            //value={username}
+            onChange={({ target }) => setUsername(target.value)}
+            value={username}
           />
         </form>
         <p className="ml-4 text-sm text-white mb-1 ">Full name</p>
@@ -49,8 +98,8 @@ function signUp() {
             placeholder="Enter name"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="fullname"
-            //onChange={({ target }) => setUsername(target.value)}
-            //value={username}
+            onChange={({ target }) => setFullname(target.value)}
+            value={fullname}
           />
         </form>
         <p className="ml-4 text-sm text-white mb-1 ">Email</p>
@@ -61,8 +110,8 @@ function signUp() {
             placeholder="Enter Email"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="email"
-            //onChange={({ target }) => setUsername(target.value)}
-            //value={username}
+            onChange={({ target }) => setEmail(target.value)}
+            value={email}
           />
         </form>
         <p className="ml-4 text-sm text-white mb-1 ">Password</p>
@@ -73,13 +122,15 @@ function signUp() {
             placeholder="Enter Password"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="password"
-            //onChange={({ target }) => setUsername(target.value)}
-            //value={username}
+            onChange={({ target }) => setPassword(target.value)}
+            value={password}
           />
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center ">
             <button
+              disabled={isInvalid}
               type="submit"
-              className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8"
+              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5"
+              ${isInvalid && " opacity-50"}`}
             >
               Submit
             </button>
