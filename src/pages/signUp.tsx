@@ -1,10 +1,18 @@
-import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore";
+import { auth, firestore } from "../lib/firebase.js";
 
 function signUp() {
   const router = useRouter();
+  const [username, setUsername] = useState("");
+
   const handleSignup = () => {
     router.push("/login");
   };
@@ -19,11 +27,12 @@ function signUp() {
       >
         <div className="flex flex-col items-center">
           <Image
-            src="/images/register.svg"
+            src="/images/register.png"
             alt="Fitness App Logo"
             className="mb-10 mt-10"
             width={200}
-            height={100}
+            height={40}
+            priority={true}
           />
         </div>
         <div className="relative">
@@ -77,10 +86,10 @@ function signUp() {
             //onChange={({ target }) => setUsername(target.value)}
             //value={username}
           />
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center ">
             <button
               type="submit"
-              className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8"
+              className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5"
             >
               Submit
             </button>
