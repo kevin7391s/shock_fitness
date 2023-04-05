@@ -6,7 +6,13 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getFirestore,
+  getDoc,
+  collection,
+} from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase.js";
 
 function signUp() {
@@ -20,6 +26,34 @@ function signUp() {
 
   const handleSignup = async (event: React.FormEvent) => {
     event.preventDefault();
+    setError("");
+    try {
+      const usernameDoc = await getDoc(doc(firestore, "usernames", username));
+      if (usernameDoc.exists()) {
+        setError("Username is already taken");
+      } else {
+        const { user } = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        // Save the user's additional information (username and fullname) to Firestore
+        const usersRef = collection(firestore, "users");
+        const userDoc = doc(usersRef, user.uid);
+        await setDoc(userDoc, {
+          username,
+          fullname,
+          email,
+        });
+
+        router.push("/login");
+      }
+    } catch (error) {
+      setFullname("");
+      setEmail("");
+      setPassword("");
+      setError(error.message);
+    }
   };
   return (
     <div
@@ -40,6 +74,7 @@ function signUp() {
             priority={true}
           />
         </div>
+        {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
         <div className="relative">
           <div className="bg-cyan-300 h-1 w-full mr-1  shadow-md mb-8 opacity"></div>
         </div>
