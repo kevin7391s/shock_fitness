@@ -16,9 +16,10 @@ function signUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const isInvalid = password == "" || email == "";
 
-  const handleSignup = () => {
-    router.push("/login");
+  const handleSignup = async (event: React.FormEvent) => {
+    event.preventDefault();
   };
   return (
     <div
@@ -92,8 +93,10 @@ function signUp() {
           />
           <div className="flex flex-col items-center ">
             <button
+              disabled={isInvalid}
               type="submit"
-              className="bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5"
+              className={`bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5"
+              ${isInvalid && "opacity-50"}`}
             >
               Submit
             </button>
