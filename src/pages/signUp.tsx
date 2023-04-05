@@ -52,8 +52,8 @@ function signUp() {
             placeholder="Enter Username"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="username"
-            //onChange={({ target }) => setUsername(target.value)}
-            //value={username}
+            onChange={({ target }) => setUsername(target.value)}
+            value={username}
           />
         </form>
         <p className="ml-4 text-sm text-white mb-1 ">Full name</p>
@@ -64,8 +64,8 @@ function signUp() {
             placeholder="Enter name"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="fullname"
-            //onChange={({ target }) => setUsername(target.value)}
-            //value={username}
+            onChange={({ target }) => setFullname(target.value)}
+            value={fullname}
           />
         </form>
         <p className="ml-4 text-sm text-white mb-1 ">Email</p>
@@ -76,8 +76,8 @@ function signUp() {
             placeholder="Enter Email"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="email"
-            //onChange={({ target }) => setUsername(target.value)}
-            //value={username}
+            onChange={({ target }) => setEmail(target.value)}
+            value={email}
           />
         </form>
         <p className="ml-4 text-sm text-white mb-1 ">Password</p>
@@ -88,15 +88,15 @@ function signUp() {
             placeholder="Enter Password"
             className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
             name="password"
-            //onChange={({ target }) => setUsername(target.value)}
-            //value={username}
+            onChange={({ target }) => setPassword(target.value)}
+            value={password}
           />
           <div className="flex flex-col items-center ">
             <button
               disabled={isInvalid}
               type="submit"
-              className={`bg-white hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5"
-              ${isInvalid && "opacity-50"}`}
+              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5"
+              ${isInvalid && " opacity-50"}`}
             >
               Submit
             </button>
