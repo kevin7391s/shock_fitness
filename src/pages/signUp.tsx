@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function signUp() {
   const router = useRouter();
