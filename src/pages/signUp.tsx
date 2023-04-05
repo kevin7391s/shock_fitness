@@ -12,6 +12,10 @@ import { auth, firestore } from "../lib/firebase.js";
 function signUp() {
   const router = useRouter();
   const [username, setUsername] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSignup = () => {
     router.push("/login");
