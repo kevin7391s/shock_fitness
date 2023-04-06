@@ -74,9 +74,7 @@ function signUp() {
           />
         </div>
         {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
-        <div className="relative">
-          <div className="bg-cyan-300 h-1 w-full mr-1  shadow-md mb-8 opacity"></div>
-        </div>
+        <div className="relative"></div>
 
         <p className="ml-4 text-sm text-white mb-1 ">Username</p>
         <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
@@ -129,15 +127,13 @@ function signUp() {
             <button
               disabled={isInvalid}
               type="submit"
-              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5"
+              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-20 mb-5"
               ${isInvalid && " opacity-50"}`}
             >
               Submit
             </button>
           </div>
         </form>
-
-        <div className="bg-cyan-300 h-1 w-full mr-1  shadow-md mt-8"></div>
       </div>
     </div>
   );
