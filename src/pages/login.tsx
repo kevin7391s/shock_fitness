@@ -19,7 +19,7 @@ function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/home");
+      router.push("/profile");
     } catch (error: unknown) {
       if (error instanceof Error) {
         setError(error.message);
