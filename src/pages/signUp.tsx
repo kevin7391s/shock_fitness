@@ -40,6 +40,10 @@ function signUp() {
           fullname,
           email,
         });
+
+        await updateProfile(user, {
+          displayName: username,
+        });
         // if all is correct, push user to login page to login to home page
         router.push("/login");
       }

@@ -53,7 +53,7 @@ function home() {
         <Card cardData={cardData2} />
       </div>
       <Link
-        href="/login"
+        href="/addWorkout"
         className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
       >
         Add Weight training

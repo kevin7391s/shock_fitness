@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import Image from "next/image";
+import { doc, getDoc } from "firebase/firestore";
 
 let defaultImage = "/images/exerciseMan.jpg";
 let name = "Guest";
