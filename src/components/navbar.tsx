@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../lib/firebase";
 import Image from "next/image";
+import { doc, getDoc } from "firebase/firestore";
 
 let defaultImage = "/images/exerciseMan.jpg";
 let name = "Guest";
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
+  const [username, setUsername] = useState("Guest");
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUsername(user.displayName || "User");
+      } else {
+        setUsername("Guest");
+      }
+    });
+    return () => {
+      unSubscribe();
+    };
+  }, []);
 
   return (
     <nav
@@ -26,7 +43,7 @@ export default function NavBar() {
               <h2 className=" text-xs items-center mt-2 text-white ">
                 Hello,{" "}
                 <p className="text-sm font-primary font-bold text-white">
-                  {name}
+                  {username}
                 </p>
               </h2>
             </a>
