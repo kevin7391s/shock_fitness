@@ -100,18 +100,32 @@ export default function NavBar() {
               <li className="text-white hover:text-blue-600">
                 <a href="javascript:void(0)">Home</a>
               </li>
-              <li className="text-white hover:text-blue-600">
-                <a href="javascript:void(0)">Blog</a>
-              </li>
-              <li className="text-white hover:text-blue-600">
-                <a href="javascript:void(0)">About US</a>
-              </li>
+
               <li className="text-white hover:text-blue-600">
                 <a href="javascript:void(0)">Contact US</a>
               </li>
-              <li className="text-white hover:text-blue-600">
-                <a href="javascript:void(0)">Logout</a>
-              </li>
+
+              {isLoggedIn ? (
+                //user is logged in
+                <>
+                  <li className="text-white hover:text-blue-600">
+                    <a href="javascript:void(0)">Profile</a>
+                  </li>
+                  <li className="text-white hover:text-blue-600">
+                    <a href="javascript:void(0)">Logout</a>
+                  </li>
+                </>
+              ) : (
+                //user is not logged in
+                <>
+                  <li className="text-white hover:text-blue-600">
+                    <a href="javascript:void(0)">Sign Up</a>
+                  </li>
+                  <li className="text-white hover:text-blue-600">
+                    <a href="javascript:void(0)">Login</a>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
