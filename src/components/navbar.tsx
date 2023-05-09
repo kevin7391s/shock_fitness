@@ -9,13 +9,16 @@ let name = "Guest";
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const [username, setUsername] = useState("Guest");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUsername(user.displayName || "User");
+        setIsLoggedIn(true);
       } else {
         setUsername("Guest");
+        setIsLoggedIn(false);
       }
     });
     return () => {
@@ -105,6 +108,9 @@ export default function NavBar() {
               </li>
               <li className="text-white hover:text-blue-600">
                 <a href="javascript:void(0)">Contact US</a>
+              </li>
+              <li className="text-white hover:text-blue-600">
+                <a href="javascript:void(0)">Logout</a>
               </li>
             </ul>
           </div>
