@@ -112,17 +112,17 @@ export default function NavBar() {
                     <a href="javascript:void(0)">Profile</a>
                   </li>
                   <li className="text-white hover:text-blue-600">
-                    <a href="javascript:void(0)">Logout</a>
+                    <a href="/logout">Logout</a>
                   </li>
                 </>
               ) : (
                 //user is not logged in
                 <>
                   <li className="text-white hover:text-blue-600">
-                    <a href="javascript:void(0)">Sign Up</a>
+                    <a href="/signUp">Sign Up</a>
                   </li>
                   <li className="text-white hover:text-blue-600">
-                    <a href="javascript:void(0)">Login</a>
+                    <a href="/login">Login</a>
                   </li>
                 </>
               )}
