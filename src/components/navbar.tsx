@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import Image from "next/image";
 import { doc, getDoc } from "firebase/firestore";
+import Logout from "./logout";
 
 let defaultImage = "/images/exerciseMan.jpg";
 let name = "Guest";
@@ -111,18 +112,19 @@ export default function NavBar() {
                   <li className="text-white hover:text-blue-600">
                     <a href="javascript:void(0)">Profile</a>
                   </li>
+
                   <li className="text-white hover:text-blue-600">
-                    <a href="javascript:void(0)">Logout</a>
+                    <Logout />
                   </li>
                 </>
               ) : (
                 //user is not logged in
                 <>
                   <li className="text-white hover:text-blue-600">
-                    <a href="javascript:void(0)">Sign Up</a>
+                    <a href="/signUp">Sign Up</a>
                   </li>
                   <li className="text-white hover:text-blue-600">
-                    <a href="javascript:void(0)">Login</a>
+                    <a href="/login">Login</a>
                   </li>
                 </>
               )}
