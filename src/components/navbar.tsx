@@ -35,7 +35,7 @@ export default function NavBar() {
       <div className="justify-between px-4 mx-auto lg:max-w-7xl 3xl:items-center 3xl:flex 3xl:px-8 shadow-lg">
         <div>
           <div className="flex items-center justify-between py-3 3xl:py-5 3xl:block">
-            <a href="javascript:void(0)" className="flex ml-1 ">
+            <a href="/home" className="flex ml-1 ">
               <Image
                 className="rounded-full  mr-3"
                 src={defaultImage}
@@ -99,7 +99,7 @@ export default function NavBar() {
           >
             <ul className="items-center justify-center space-y-8 3xl:flex 3xl:space-x-6 3xl:space-y-0">
               <li className="text-white hover:text-blue-600">
-                <a href="javascript:void(0)">Home</a>
+                <a href="/home">Home</a>
               </li>
 
               <li className="text-white hover:text-blue-600">
@@ -110,7 +110,7 @@ export default function NavBar() {
                 //user is logged in
                 <>
                   <li className="text-white hover:text-blue-600">
-                    <a href="javascript:void(0)">Profile</a>
+                    <a href="/profile">Profile</a>
                   </li>
 
                   <li className="text-white hover:text-blue-600">
