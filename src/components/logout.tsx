@@ -10,7 +10,6 @@ function logout() {
       console.error("Error signing out:", error);
     }
   }
-  //test
 
   return (
     <button className="text-white hover:text-blue-600" onClick={handleLogout}>
