@@ -89,6 +89,7 @@ to manage a form */
                 Select workout type
               </option>
               {/* workout type options */}
+              <option value="Select">Select Type</option>
               <option value="cardio">Cardio</option>
               <option value="weightlifting">Weightlifting</option>
             </select>
