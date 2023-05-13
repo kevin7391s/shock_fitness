@@ -18,26 +18,36 @@ function AddWorkout() {
   // can either handle a string or a null value
   const [workoutType, setWorkoutType] = useState<string | null>(null);
 
-  /* call the useForm hook to return an object that has functions
-   to manage a form */
+  {
+    /* call the useForm hook to return an object that has functions
+to manage a form */
+  }
   const { register, handleSubmit, watch, reset } = useForm<FormValues>();
 
-  // function to show data on console
+  {
+    /*function to show data on console */
+  }
   const onSubmit = (data: FormValues) => {
     console.log(data);
     reset();
   };
 
-  // observe changes in the workout type
+  {
+    /* observe changes in the workout type*/
+  }
   const workoutTypeSelected = watch("workoutType", "");
 
-  // observe changes in sets for added input fields
+  {
+    /*observe changes in sets for added input fields*/
+  }
   const sets = watch("sets", 0);
 
-  /* used for setting the workout type state variable to the current 
+  {
+    /*used for setting the workout type state variable to the current 
   state of workoutType. [workoutTypeSelected] is the dependency array for 
   this effect, The effect will only run when one of the values in the array
-  changes, in this case when workoutTypeSelected changes */
+  changes, in this case when workoutTypeSelected changes  */
+  }
 
   useEffect(() => {
     setWorkoutType(workoutTypeSelected);
@@ -56,6 +66,7 @@ function AddWorkout() {
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
           <div className="mb-4">
+            {/*workout type label and input*/}
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="workoutType"
@@ -70,11 +81,13 @@ function AddWorkout() {
               <option disabled value="">
                 Select workout type
               </option>
+              {/* workout type options */}
               <option value="cardio">Cardio</option>
               <option value="weightlifting">Weightlifting</option>
             </select>
           </div>
 
+          {/*if cardio workouttype is selected, display the following fields */}
           {workoutType === "cardio" && (
             <>
               <div className="mb-4">
@@ -129,7 +142,8 @@ function AddWorkout() {
                   {...register("duration")}
                   id="duration"
                   type="number"
-                  step="0.5"
+                  step="0.1"
+                  min="0"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
