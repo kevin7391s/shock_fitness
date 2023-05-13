@@ -185,6 +185,8 @@ to manage a form */
                   id="sets"
                   type="number"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  min="0"
+                  max="10"
                 />
               </div>
               {/* Create inputs for weight and reps based on number of sets */}
@@ -203,6 +205,7 @@ to manage a form */
                       type="number"
                       step="5"
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      min="0"
                     />
                   </div>
                   <div className="mb-4">
@@ -217,6 +220,7 @@ to manage a form */
                       id={`reps-${i}`}
                       type="number"
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      min="0"
                     />
                   </div>
                 </div>
