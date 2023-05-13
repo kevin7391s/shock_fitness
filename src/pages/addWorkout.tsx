@@ -35,8 +35,28 @@ to manage a form */
     /*function to show data on console */
   }
   const onSubmit = (data: FormValues) => {
-    console.log(data);
-    reset();
+    if (data.workoutType === "cardio") {
+      const { workoutType, cardioType, intensity, duration } = data;
+      const cardioData = { workoutType, cardioType, intensity, duration };
+      console.log(cardioData);
+      reset();
+    } else if (data.workoutType === "weightlifting") {
+      const { workoutType, weightliftingType, sets } = data;
+      const weightliftingData: any = {
+        workoutType,
+        weightliftingType,
+        sets,
+        setDetails: [],
+      };
+      for (let i = 0; i < sets; i++) {
+        weightliftingData.setDetails.push({
+          weight: data[`weight-${i}`],
+          reps: data[`reps-${i}`],
+        });
+      }
+      console.log(weightliftingData);
+      reset();
+    }
   };
 
   {
@@ -168,21 +188,19 @@ to manage a form */
                   Weightlifting Type
                 </label>
                 <select
-                  {...(register("weightliftingType"), { required: true })}
+                  {...register("weightliftingType")}
                   id="weightliftingType"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 >
                   <option disabled value="">
                     Select weightlifting type
                   </option>
+
                   <option value="benchpress">Bench Press</option>
                   <option value="deadlift">Deadlift</option>
                   <option value="squat">Squat</option>
                   {/* Add other weightlifting types as needed */}
                 </select>
-                {errors.weightliftingType && (
-                  <p className="text-red-500">This field is required</p>
-                )}
               </div>
               <div className="mb-4">
                 <label
