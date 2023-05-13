@@ -12,6 +12,7 @@ type FormValues = {
   sets: number;
   weight: number;
   reps: number;
+  [key: string]: string | number;
 };
 
 function AddWorkout() {
