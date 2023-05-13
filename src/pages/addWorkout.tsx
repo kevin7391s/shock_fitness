@@ -23,7 +23,13 @@ function AddWorkout() {
     /* call the useForm hook to return an object that has functions
 to manage a form */
   }
-  const { register, handleSubmit, watch, reset } = useForm<FormValues>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>();
 
   {
     /*function to show data on console */
@@ -161,7 +167,7 @@ to manage a form */
                   Weightlifting Type
                 </label>
                 <select
-                  {...register("weightliftingType")}
+                  {...(register("weightliftingType"), { required: true })}
                   id="weightliftingType"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 >
@@ -173,6 +179,9 @@ to manage a form */
                   <option value="squat">Squat</option>
                   {/* Add other weightlifting types as needed */}
                 </select>
+                {errors.weightliftingType && (
+                  <p className="text-red-500">This field is required</p>
+                )}
               </div>
               <div className="mb-4">
                 <label
@@ -182,7 +191,7 @@ to manage a form */
                   Sets
                 </label>
                 <input
-                  {...register("sets")}
+                  {...(register("sets"), { required: true })}
                   id="sets"
                   type="number"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
