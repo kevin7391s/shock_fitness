@@ -20,10 +20,13 @@ function AddWorkout() {
 
   /* call the useForm hook to return an object that has functions
    to manage a form */
-  const { register, handleSubmit, watch } = useForm<FormValues>();
+  const { register, handleSubmit, watch, reset } = useForm<FormValues>();
 
   // function to show data on console
-  const onSubmit = (data: FormValues) => console.log(data);
+  const onSubmit = (data: FormValues) => {
+    console.log(data);
+    reset();
+  };
 
   // observe changes in the workout type
   const workoutTypeSelected = watch("workoutType", "");
