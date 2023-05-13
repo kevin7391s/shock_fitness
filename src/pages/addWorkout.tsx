@@ -28,6 +28,9 @@ function AddWorkout() {
   // observe changes in the workout type
   const workoutTypeSelected = watch("workoutType", "");
 
+  // observe changes in sets for added input fields
+  const sets = watch("sets", 0);
+
   /* used for setting the workout type state variable to the current 
   state of workoutType. [workoutTypeSelected] is the dependency array for 
   this effect, The effect will only run when one of the values in the array
@@ -117,13 +120,13 @@ function AddWorkout() {
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="duration"
                 >
-                  Duration
+                  Duration (Minutes)
                 </label>
                 <input
                   {...register("duration")}
                   id="duration"
                   type="number"
-                  step="0.1"
+                  step="0.5"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
@@ -167,34 +170,40 @@ function AddWorkout() {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="weight"
-                >
-                  Weight
-                </label>
-                <input
-                  {...register("weight")}
-                  id="weight"
-                  type="number"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="reps"
-                >
-                  Reps
-                </label>
-                <input
-                  {...register("reps")}
-                  id="reps"
-                  type="number"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                />
-              </div>
+              {/* Create inputs for weight and reps based on number of sets */}
+              {Array.from({ length: sets }, (_, i) => (
+                <div key={i}>
+                  <div className="mb-4">
+                    <label
+                      className="block text-gray-700 text-sm font-bold mb-2"
+                      htmlFor={`weight-${i}`}
+                    >
+                      Weight for set {i + 1}
+                    </label>
+                    <input
+                      {...register(`weight-${i}`)}
+                      id={`weight-${i}`}
+                      type="number"
+                      step="5"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      className="block text-gray-700 text-sm font-bold mb-2"
+                      htmlFor={`reps-${i}`}
+                    >
+                      Reps for set {i + 1}
+                    </label>
+                    <input
+                      {...register(`reps-${i}`)}
+                      id={`reps-${i}`}
+                      type="number"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                  </div>
+                </div>
+              ))}
             </>
           )}
 
