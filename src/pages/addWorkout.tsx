@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import NavBar from "@/components/navbar";
 
+// declare types
 type FormValues = {
   workoutType: string;
   cardioType: string;
@@ -14,11 +15,23 @@ type FormValues = {
 };
 
 function AddWorkout() {
+  // can either handle a string or a null value
   const [workoutType, setWorkoutType] = useState<string | null>(null);
+
+  /* call the useForm hook to return an object that has functions
+   to manage a form */
   const { register, handleSubmit, watch } = useForm<FormValues>();
+
+  // function to show data on console
   const onSubmit = (data: FormValues) => console.log(data);
 
+  // observe changes in the workout type
   const workoutTypeSelected = watch("workoutType", "");
+
+  /* used for setting the workout type state variable to the current 
+  state of workoutType. [workoutTypeSelected] is the dependency array for 
+  this effect, The effect will only run when one of the values in the array
+  changes, in this case when workoutTypeSelected changes */
 
   useEffect(() => {
     setWorkoutType(workoutTypeSelected);
