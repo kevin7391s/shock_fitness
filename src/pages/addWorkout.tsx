@@ -47,7 +47,7 @@ to manage a form */
   {
     /*observe changes in sets for added input fields*/
   }
-  const sets = watch("sets", 0);
+  const sets = Number(watch("sets", 0));
 
   {
     /*used for setting the workout type state variable to the current 
@@ -191,7 +191,7 @@ to manage a form */
                   Sets
                 </label>
                 <input
-                  {...(register("sets"), { required: true })}
+                  {...register("sets")}
                   id="sets"
                   type="number"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -210,13 +210,16 @@ to manage a form */
                       Weight for set {i + 1}
                     </label>
                     <input
-                      {...register(`weight-${i}`)}
+                      {...register(`weight-${i}`, { required: true })}
                       id={`weight-${i}`}
                       type="number"
                       step="5"
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       min="0"
                     />
+                    {errors[`weight-${i}`] && (
+                      <p className="text-red-500">This field is required</p>
+                    )}
                   </div>
                   <div className="mb-4">
                     <label
@@ -226,7 +229,7 @@ to manage a form */
                       Reps for set {i + 1}
                     </label>
                     <input
-                      {...register(`reps-${i}`)}
+                      {...register(`reps-${i}`, { required: true })}
                       id={`reps-${i}`}
                       type="number"
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
