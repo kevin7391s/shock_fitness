@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import NavBar from "@/components/navbar";
 import Image from "next/image";
 import { auth, firestore } from "../lib/firebase.js";
+import { addDoc, collection } from "firebase/firestore";
 
 // declare types
 type FormValues = {
@@ -20,6 +21,7 @@ type FormValues = {
 function AddWorkout() {
   // can either handle a string or a null value
   const [workoutType, setWorkoutType] = useState<string | null>(null);
+  const [workoutAdded, setWorkoutAdded] = useState(false);
 
   {
     /* call the useForm hook to return an object that has functions
@@ -36,28 +38,53 @@ to manage a form */
   {
     /*function to show data on console */
   }
-  const onSubmit = (data: FormValues) => {
-    if (data.workoutType === "cardio") {
-      const { workoutType, cardioType, intensity, duration } = data;
-      const cardioData = { workoutType, cardioType, intensity, duration };
-      console.log(cardioData);
-      reset();
-    } else if (data.workoutType === "weightlifting") {
-      const { workoutType, weightliftingType, sets } = data;
-      const weightliftingData: any = {
-        workoutType,
-        weightliftingType,
-        sets,
-        setDetails: [],
-      };
-      for (let i = 0; i < sets; i++) {
-        weightliftingData.setDetails.push({
-          weight: data[`weight-${i}`],
-          reps: data[`reps-${i}`],
-        });
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const user = auth.currentUser;
+      if (!user) {
+        throw new Error("No user logged in");
       }
-      console.log(weightliftingData);
-      reset();
+      const uid = user.uid;
+
+      const date = new Date();
+
+      if (data.workoutType === "cardio") {
+        const { workoutType, cardioType, intensity, duration } = data;
+        const cardioData = {
+          workoutType,
+          cardioType,
+          intensity,
+          duration,
+          user: uid,
+          date,
+        };
+        await addDoc(collection(firestore, "workouts"), cardioData);
+        console.log(cardioData);
+        setWorkoutAdded(true);
+        reset();
+      } else if (data.workoutType === "weightlifting") {
+        const { workoutType, weightliftingType, sets } = data;
+        const weightliftingData: any = {
+          workoutType,
+          weightliftingType,
+          sets,
+          user: uid,
+          date,
+          setDetails: [],
+        };
+        for (let i = 0; i < sets; i++) {
+          weightliftingData.setDetails.push({
+            weight: data[`weight-${i}`],
+            reps: data[`reps-${i}`],
+          });
+        }
+        await addDoc(collection(firestore, "workouts"), weightliftingData);
+        console.log(weightliftingData);
+        setWorkoutAdded(true);
+        reset();
+      }
+    } catch (error) {
+      console.error("Error adding document: ", error);
     }
   };
 
@@ -208,6 +235,7 @@ to manage a form */
                   <option value="benchpress">Bench Press</option>
                   <option value="deadlift">Deadlift</option>
                   <option value="squat">Squat</option>
+                  <option value="shoulder press">Shoulder Press</option>
                   {/* Add other weightlifting types as needed */}
                 </select>
               </div>
@@ -276,6 +304,9 @@ to manage a form */
             >
               Submit
             </button>
+            {workoutAdded && (
+              <p className="mt-10 font-bold text-xl">Workout Added!</p>
+            )}
           </div>
         </form>
       </div>
