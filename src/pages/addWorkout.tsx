@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import NavBar from "@/components/navbar";
 import Image from "next/image";
+import { auth, firestore } from "../lib/firebase.js";
 
 // declare types
 type FormValues = {
