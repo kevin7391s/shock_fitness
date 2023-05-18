@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import NavBar from "@/components/navbar";
+import Image from "next/image";
 
 // declare types
 type FormValues = {
@@ -86,13 +87,20 @@ to manage a form */
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
+      <Image
+        src="/images/addworkout.png"
+        alt="Fitness App Logo"
+        className="relative top-10 mt-20 ml-5"
+        width={400}
+        height={100}
+      />
 
-      <div className="w-full max-w-xs mx-auto mt-36">
+      <div className="w-full max-w-xs mx-auto mt-20">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
-          <div className="mb-4">
+          <div className="mb-4 ">
             {/*workout type label and input*/}
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -260,9 +268,9 @@ to manage a form */
             </>
           )}
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col items-center justify-between">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-cyan-300 hover:bg-cyan-500 hover:text-white text-gray-700 font-bold py-2 px-4 rounded  mt-3 content-center shadow-md "
               type="submit"
             >
               Submit
