@@ -60,8 +60,9 @@ to manage a form */
         };
         await addDoc(collection(firestore, "workouts"), cardioData);
         console.log(cardioData);
-        setWorkoutAdded(true);
         reset();
+        setWorkoutAdded(true);
+        setTimeout(() => setWorkoutAdded(false), 2000);
       } else if (data.workoutType === "weightlifting") {
         const { workoutType, weightliftingType, sets } = data;
         const weightliftingData: any = {
@@ -80,8 +81,9 @@ to manage a form */
         }
         await addDoc(collection(firestore, "workouts"), weightliftingData);
         console.log(weightliftingData);
-        setWorkoutAdded(true);
         reset();
+        setWorkoutAdded(true);
+        setTimeout(() => setWorkoutAdded(false), 2000);
       }
     } catch (error) {
       console.error("Error adding document: ", error);
