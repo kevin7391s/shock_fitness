@@ -7,6 +7,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase.js";
+import { onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
 import NavBar from "@/components/navbar";
 
@@ -26,30 +27,37 @@ function ViewWorkouts() {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
 
   useEffect(() => {
-    const user = auth.currentUser;
-    if (!user) {
-      console.log("No user logged in");
-      return;
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const workoutQuery = query(
+          collection(firestore, "workouts"),
+          where("user", "==", user.uid)
+        );
 
-    const workoutQuery = query(
-      collection(firestore, "workouts"),
-      where("user", "==", user.uid)
-    );
+        const unsub = onSnapshot(workoutQuery, (snapshot) => {
+          const fetchedWorkouts: Workout[] = [];
+          snapshot.forEach((doc) =>
+            fetchedWorkouts.push(doc.data() as Workout)
+          );
+          setWorkouts(fetchedWorkouts);
+        });
 
-    const unsub = onSnapshot(workoutQuery, (snapshot) => {
-      const fetchedWorkouts: Workout[] = [];
-      snapshot.forEach((doc) => fetchedWorkouts.push(doc.data() as Workout));
-      setWorkouts(fetchedWorkouts);
+        // Clean up the subscription on unmount
+        return () => {
+          unsub();
+        };
+      } else {
+        console.log("No user logged in");
+      }
     });
 
-    // Clean up the subscription on unmount
-    return () => unsub();
+    return unsubscribe;
   }, []);
 
   return (
     <div>
       <NavBar />
+
       {workouts.map((workout, i) => (
         <div key={i} className="workout-box">
           <h2>Date: {workout.date.toDate().toDateString()}</h2>
