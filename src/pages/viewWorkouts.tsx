@@ -8,6 +8,7 @@ import {
 } from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase.js";
 import Image from "next/image";
+import NavBar from "@/components/navbar";
 
 interface Workout {
   workoutType: string;
@@ -48,6 +49,7 @@ function ViewWorkouts() {
 
   return (
     <div>
+      <NavBar />
       {workouts.map((workout, i) => (
         <div key={i} className="workout-box">
           <h2>Date: {workout.date.toDate().toDateString()}</h2>
