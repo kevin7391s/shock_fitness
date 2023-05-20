@@ -55,39 +55,51 @@ function ViewWorkouts() {
   }, []);
 
   return (
-    <div>
+    <div
+      className="bg-black min-h-screen text-white"
+      style={{ backgroundColor: "#121212" }}
+    >
       <NavBar />
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <Image
+          src="/images/viewWorkouts.png"
+          alt="viewWorkoutImage"
+          className="mb-20"
+          width={400}
+          height={100}
+        />
 
-      <div className="grid  grid-flow-row gap-4 mt-20">
-        {workouts.map((workout, i) => (
-          <div key={i} className="workout-box">
-            <h2>Date: {workout.date.toDate().toDateString()}</h2>
-            <p>Workout Type: {workout.workoutType}</p>
-            {workout.workoutType === "cardio" && (
-              <>
-                <p>Cardio Type: {workout.cardioType}</p>
-                <p>Intensity: {workout.intensity}</p>
-                <p>Duration: {workout.duration} minutes</p>
-              </>
-            )}
-            {workout.workoutType === "weightlifting" && (
-              <>
-                <p>Weightlifting Type: {workout.weightliftingType}</p>
-                <p>Sets: {workout.sets}</p>
-                {workout.setDetails?.map((set, i) => (
-                  <div key={i}>
-                    <p>
-                      Set {i + 1} Weight: {set.weight} lbs
-                    </p>
-                    <p>
-                      Set {i + 1} Reps: {set.reps}
-                    </p>
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
-        ))}
+        <div className="grid  grid-flow-row gap-4 mt-3 mr-36">
+          {workouts.map((workout, i) => (
+            <div key={i} className="workout-box">
+              <h2>Date: {workout.date.toDate().toDateString()}</h2>
+              <p>Workout Type: {workout.workoutType}</p>
+              {workout.workoutType === "cardio" && (
+                <>
+                  <p>Cardio Type: {workout.cardioType}</p>
+                  <p>Intensity: {workout.intensity}</p>
+                  <p>Duration: {workout.duration} minutes</p>
+                </>
+              )}
+              {workout.workoutType === "weightlifting" && (
+                <>
+                  <p>Weightlifting Type: {workout.weightliftingType}</p>
+                  <p>Sets: {workout.sets}</p>
+                  {workout.setDetails?.map((set, i) => (
+                    <div key={i}>
+                      <p>
+                        Set {i + 1} Weight: {set.weight} lbs
+                      </p>
+                      <p>
+                        Set {i + 1} Reps: {set.reps}
+                      </p>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
