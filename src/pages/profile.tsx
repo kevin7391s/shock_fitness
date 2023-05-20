@@ -76,6 +76,12 @@ function Profile() {
         >
           Add workout
         </Link>
+        <Link
+          href="/viewWorkouts"
+          className="flex flex-col items-center mt-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
+        >
+          View past workouts
+        </Link>
       </div>
     </div>
   );
