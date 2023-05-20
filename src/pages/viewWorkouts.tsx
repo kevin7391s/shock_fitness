@@ -7,6 +7,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase.js";
+import Image from "next/image";
 
 interface Workout {
   workoutType: string;
