@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase.js";
+import Link from "next/link.js";
 
 function Login() {
   const router = useRouter();
@@ -79,6 +80,12 @@ function Login() {
             </button>
           </div>
         </form>
+        <Link
+          href="/landingPage"
+          className="flex flex-col items-center text-white hover:text-cyan-300 text-sm mt-9 "
+        >
+          Back
+        </Link>
       </div>
     </div>
   );
