@@ -14,6 +14,7 @@ function home() {
     {
       image: "/images/boxingman.jpg",
       text: "This is some overlay text.",
+      type: "Cardio",
     },
   ];
   const cardData2 = [
@@ -25,6 +26,7 @@ function home() {
     {
       image: "/images/weightlifting.jpg",
       text: "This is some overlay text.",
+      type: "Weight training",
     },
   ];
   const cardData3 = [
@@ -36,6 +38,7 @@ function home() {
     {
       image: "/images/ExerciseMan.jpg",
       text: "This is some overlay text.",
+      type: "Profile",
     },
   ];
   return (
@@ -67,7 +70,7 @@ function home() {
         href="/addWorkout"
         className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
       >
-        Profile
+        Add weight training
       </Link>
       <div className="static mt-7 text-center items-center">
         <Card cardData={cardData3} />

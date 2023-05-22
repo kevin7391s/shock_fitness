@@ -2,8 +2,6 @@ import { useState } from "react";
 import Image from "next/image";
 
 interface CardData {
-  name: string;
-  value: string;
   image: string;
   type: string;
   text: string;
