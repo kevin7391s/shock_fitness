@@ -54,7 +54,11 @@ function signUp() {
       setFullname("");
       setEmail("");
       setPassword("");
-      setError(error.message);
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An error occurred");
+      }
     }
   };
 
