@@ -5,6 +5,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc, getDoc, collection } from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase.js";
+import Link from "next/link.js";
 
 function signUp() {
   //state values
@@ -131,13 +132,19 @@ function signUp() {
             <button
               disabled={isInvalid}
               type="submit"
-              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-20 mb-5"
+              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mt-20 mb-5"
               ${isInvalid && " opacity-50"}`}
             >
               Submit
             </button>
           </div>
         </form>
+        <Link
+          href="/landingPage"
+          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 "
+        >
+          Back
+        </Link>
       </div>
     </div>
   );

@@ -72,7 +72,7 @@ function Login() {
             <button
               disabled={isInvalid}
               type="submit"
-              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5 ${
+              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded  mt-8 mb-5 ${
                 isInvalid && "opacity-50"
               }`}
             >
@@ -81,10 +81,10 @@ function Login() {
           </div>
         </form>
         <Link
-          href="/landingPage"
-          className="flex flex-col items-center text-white hover:text-cyan-300 text-sm mt-9 "
+          href="/signUp"
+          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 "
         >
-          Back
+          Not a member? Sign up here
         </Link>
       </div>
     </div>
