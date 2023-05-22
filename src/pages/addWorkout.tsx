@@ -208,7 +208,7 @@ to manage a form */
                   {...register("duration")}
                   id="duration"
                   type="number"
-                  step="0.1"
+                  step="1"
                   min="0"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
@@ -246,7 +246,7 @@ to manage a form */
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="sets"
                 >
-                  Sets
+                  Sets (Max 10)
                 </label>
                 <input
                   {...register("sets")}
@@ -258,7 +258,7 @@ to manage a form */
                 />
               </div>
               {/* Create inputs for weight and reps based on number of sets */}
-              {Array.from({ length: sets }, (_, i) => (
+              {Array.from({ length: Math.min(sets, 10) }, (_, i) => (
                 <div key={i}>
                   <div className="mb-4">
                     <label
@@ -271,7 +271,7 @@ to manage a form */
                       {...register(`weight-${i}`, { required: true })}
                       id={`weight-${i}`}
                       type="number"
-                      step="5"
+                      step="1"
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       min="0"
                     />

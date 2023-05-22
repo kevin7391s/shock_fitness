@@ -102,10 +102,6 @@ export default function NavBar() {
                 <a href="/home">Home</a>
               </li>
 
-              <li className="text-white hover:text-blue-600">
-                <a href="javascript:void(0)">Contact US</a>
-              </li>
-
               {isLoggedIn ? (
                 //user is logged in
                 <>
