@@ -31,9 +31,9 @@ function Profile() {
 
         querySnapshot.forEach((doc) => {
           total++;
-          if (doc.data().type === "cardio") {
+          if (doc.data().workoutType === "cardio") {
             cardio++;
-          } else if (doc.data().type === "weightlifting") {
+          } else if (doc.data().workoutType === "weightlifting") {
             weight++;
           }
         });
