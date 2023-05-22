@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase.js";
+import Link from "next/link.js";
 
 function Login() {
   const router = useRouter();
@@ -19,7 +20,7 @@ function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/profile");
+      router.push("/home");
     } catch (error: unknown) {
       if (error instanceof Error) {
         setError(error.message);
@@ -71,7 +72,7 @@ function Login() {
             <button
               disabled={isInvalid}
               type="submit"
-              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mr-4 mt-8 mb-5 ${
+              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded  mt-8 mb-5 ${
                 isInvalid && "opacity-50"
               }`}
             >
@@ -79,6 +80,12 @@ function Login() {
             </button>
           </div>
         </form>
+        <Link
+          href="/signUp"
+          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 "
+        >
+          Not a member? Sign up here
+        </Link>
       </div>
     </div>
   );
