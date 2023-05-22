@@ -258,7 +258,9 @@ to manage a form */
                 />
               </div>
               {/* Create inputs for weight and reps based on number of sets */}
+              {/* This line is creating an array of a certain length and then mapping over it to return JSX for each item */}
               {Array.from({ length: Math.min(sets, 10) }, (_, i) => (
+                // div key = {i} is creating a unique key prop to keep track of each element
                 <div key={i}>
                   <div className="mb-4">
                     <label
@@ -268,6 +270,7 @@ to manage a form */
                       Weight for set {i + 1}
                     </label>
                     <input
+                      //using register function from react-form
                       {...register(`weight-${i}`, { required: true })}
                       id={`weight-${i}`}
                       type="number"

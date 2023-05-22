@@ -1,21 +1,51 @@
 import React, { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../lib/firebase";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { query, where, getDocs, collection } from "firebase/firestore";
+import { auth, firestore } from "../lib/firebase";
 import NavBar from "@/components/navbar";
 import Link from "next/link";
 import Image from "next/image";
 
 function Profile() {
   const [username, setUsername] = useState("");
+  const [totalWorkouts, setTotalWorkouts] = useState(0);
+  const [cardioWorkouts, setCardioWorkouts] = useState(0);
+  const [weightWorkouts, setWeightWorkouts] = useState(0);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUsername(user.displayName || "User");
+
+        // query the workouts collection for documents where the user id matches the current user's id
+        const q = query(
+          collection(firestore, "workouts"),
+          where("user", "==", user.uid)
+        );
+
+        const querySnapshot = await getDocs(q);
+        let total = 0;
+        let cardio = 0;
+        let weight = 0;
+
+        querySnapshot.forEach((doc) => {
+          total++;
+          if (doc.data().workoutType === "cardio") {
+            cardio++;
+          } else if (doc.data().workoutType === "weightlifting") {
+            weight++;
+          }
+        });
+
+        setTotalWorkouts(total);
+        setCardioWorkouts(cardio);
+        setWeightWorkouts(weight);
       } else {
         setUsername("Guest");
       }
     });
+
     return () => {
       unsubscribe();
     };
@@ -53,21 +83,21 @@ function Profile() {
             style={{ backgroundColor: "#424242" }}
           >
             <h2 className="text-l">Total Workouts</h2>
-            <p className="text-sm">0</p>
+            <p className="text-sm">{totalWorkouts}</p>
           </div>
           <div
             className="p-4 bg-gray-800 rounded shadow-lg"
             style={{ backgroundColor: "#424242" }}
           >
             <h2 className="text-l">Cardio </h2>
-            <p className="text-sm">0</p>
+            <p className="text-sm">{cardioWorkouts}</p>
           </div>
           <div
             className="p-4 bg-gray-800 rounded shadow-lg"
             style={{ backgroundColor: "#424242" }}
           >
             <h2 className="text-l">Weight Training</h2>
-            <p className="text-sm">0</p>
+            <p className="text-sm">{weightWorkouts}</p>
           </div>
         </div>
         <Link
