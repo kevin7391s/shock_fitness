@@ -14,6 +14,7 @@ function home() {
     {
       image: "/images/boxingman.jpg",
       text: "This is some overlay text.",
+      type: "Cardio",
     },
   ];
   const cardData2 = [
@@ -25,6 +26,19 @@ function home() {
     {
       image: "/images/weightlifting.jpg",
       text: "This is some overlay text.",
+      type: "Weight training",
+    },
+  ];
+  const cardData3 = [
+    {
+      image: "/images/ExerciseMan.jpg",
+      text: "",
+      type: "Profile",
+    },
+    {
+      image: "/images/ExerciseMan.jpg",
+      text: "This is some overlay text.",
+      type: "Profile",
     },
   ];
   return (
@@ -56,7 +70,22 @@ function home() {
         href="/addWorkout"
         className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
       >
-        Add Weight training
+        Add weight training
+      </Link>
+      <div className="static mt-7 text-center items-center">
+        <Card cardData={cardData3} />
+      </div>
+      <Link
+        href="/profile"
+        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
+      >
+        Go to profile!
+      </Link>
+      <Link
+        href="/viewWorkouts"
+        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-3 mb-8 text-md "
+      >
+        View past workouts
       </Link>
     </div>
   );
