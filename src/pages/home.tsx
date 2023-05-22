@@ -81,6 +81,12 @@ function home() {
       >
         Go to profile!
       </Link>
+      <Link
+        href="/viewWorkouts"
+        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-3 mb-8 text-md "
+      >
+        View past workouts
+      </Link>
     </div>
   );
 }
