@@ -1,7 +1,19 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function Card({ cardData }) {
+interface CardData {
+  name: string;
+  value: string;
+  image: string;
+  type: string;
+  text: string;
+}
+
+interface CardProps {
+  cardData: CardData[];
+}
+
+export default function Card({ cardData }: CardProps) {
   const [cardState, setCardState] = useState(0);
 
   const handleClick = () => {

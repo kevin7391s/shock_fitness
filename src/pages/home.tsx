@@ -27,6 +27,17 @@ function home() {
       text: "This is some overlay text.",
     },
   ];
+  const cardData3 = [
+    {
+      image: "/images/ExerciseMan.jpg",
+      text: "",
+      type: "Profile",
+    },
+    {
+      image: "/images/ExerciseMan.jpg",
+      text: "This is some overlay text.",
+    },
+  ];
   return (
     <div
       className="flex flex-col  items-center min-h-screen bg-black"
@@ -56,7 +67,16 @@ function home() {
         href="/addWorkout"
         className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
       >
-        Add Weight training
+        Profile
+      </Link>
+      <div className="static mt-7 text-center items-center">
+        <Card cardData={cardData3} />
+      </div>
+      <Link
+        href="/profile"
+        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
+      >
+        Go to profile!
       </Link>
     </div>
   );
