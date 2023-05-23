@@ -44,45 +44,46 @@ function home() {
   ];
   return (
     <div
-      className="flex flex-col  items-center min-h-screen bg-black mb-20"
+      className="flex flex-col items-start min-h-screen bg-black"
       style={{ backgroundColor: "#121212" }}
     >
-      <NavBar />
-      <Image
-        src="/images/shockfitnesstransparent.png"
-        alt="Fitness App Logo"
-        className="relative top-10 mt-10 ml-5"
-        width={800}
-        height={100}
-      />
-      <div className="static mt-5 text-center items-center">
-        <Card cardData={cardData1} />
+      <div className="flex flex-col items-center flex-grow w-full">
+        <NavBar />
+        <Image
+          src="/images/shockfitnesstransparent.png"
+          alt="Fitness App Logo"
+          className="relative top-10 mt-10 ml-5"
+          width={800}
+          height={100}
+        />
+        <div className="static mt-5 text-center items-center">
+          <Card cardData={cardData1} />
+        </div>
+        <Link
+          href="/addWorkout"
+          className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8  "
+        >
+          Add Cardio
+        </Link>
+        <div className="static mt-7 text-center items-center">
+          <Card cardData={cardData2} />
+        </div>
+        <Link
+          href="/addWorkout"
+          className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
+        >
+          Add weight training
+        </Link>
+        <div className="static mt-7 text-center items-center">
+          <Card cardData={cardData3} />
+        </div>
+        <Link
+          href="/profile"
+          className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-36 "
+        >
+          Go to profile!
+        </Link>
       </div>
-      <Link
-        href="/addWorkout"
-        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8  "
-      >
-        Add Cardio
-      </Link>
-      <div className="static mt-7 text-center items-center">
-        <Card cardData={cardData2} />
-      </div>
-      <Link
-        href="/addWorkout"
-        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
-      >
-        Add weight training
-      </Link>
-      <div className="static mt-7 text-center items-center">
-        <Card cardData={cardData3} />
-      </div>
-      <Link
-        href="/profile"
-        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
-      >
-        Go to profile!
-      </Link>
-
       <Footer />
     </div>
   );

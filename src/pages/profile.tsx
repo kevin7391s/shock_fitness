@@ -54,23 +54,23 @@ function Profile() {
 
   return (
     <div
-      className="bg-black min-h-screen text-white"
+      className="flex flex-col min-h-screen bg-black text-white"
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
-      <div className="flex flex-col items-center justify-center min-h-screen mb-20">
+      <div className="flex flex-col items-center justify-center flex-grow mb-20">
         <Image
           src="/images/profile.png"
           alt="Fitness App Logo"
-          className=" mb-20"
-          width={300}
+          className=" mt-24 mb-5"
+          width={200}
           height={100}
         />
 
-        <div className="rounded-full h-70 w-64 overflow-hidden ">
+        <div className="rounded-full h-50 w-44 overflow-hidden ">
           <img src="/images/exerciseMan.jpg" alt="Profile picture" />
         </div>
-        <h2 className="text-4xl mb-10 mt-5">{username}</h2>
+        <h2 className="text-2xl mb-10 mt-5">{username}</h2>
         <div className="grid grid-cols-2 gap-4">
           <div
             className="p-4 bg-gray-800 rounded shadow-lg"
@@ -109,7 +109,7 @@ function Profile() {
         </Link>
         <Link
           href="/viewWorkouts"
-          className="flex flex-col items-center mt-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
+          className="flex flex-col items-center mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
         >
           View past workouts
         </Link>
