@@ -5,6 +5,7 @@ import {
   where,
   onSnapshot,
   Timestamp,
+  orderBy,
 } from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
@@ -32,7 +33,8 @@ function ViewWorkouts() {
       if (user) {
         const workoutQuery = query(
           collection(firestore, "workouts"),
-          where("user", "==", user.uid)
+          where("user", "==", user.uid),
+          orderBy("date", "desc")
         );
 
         const unsub = onSnapshot(workoutQuery, (snapshot) => {
