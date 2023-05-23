@@ -3,6 +3,7 @@ import NavBar from "@/components/navbar";
 import Image from "next/image";
 import Card from "@/components/card";
 import Link from "next/link";
+import Footer from "@/components/footer";
 
 function home() {
   const cardData1 = [
@@ -87,6 +88,7 @@ function home() {
       >
         View past workouts
       </Link>
+      <Footer />
     </div>
   );
 }
