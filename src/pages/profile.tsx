@@ -5,6 +5,7 @@ import { auth, firestore } from "../lib/firebase";
 import NavBar from "@/components/navbar";
 import Link from "next/link";
 import Image from "next/image";
+import Footer from "@/components/footer";
 
 function Profile() {
   const [username, setUsername] = useState("");
@@ -57,7 +58,7 @@ function Profile() {
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center justify-center min-h-screen mb-20">
         <Image
           src="/images/profile.png"
           alt="Fitness App Logo"
@@ -66,7 +67,7 @@ function Profile() {
           height={100}
         />
 
-        <div className="rounded-full h-70 w-64 overflow-hidden mb-10">
+        <div className="rounded-full h-70 w-64 overflow-hidden ">
           <img src="/images/exerciseMan.jpg" alt="Profile picture" />
         </div>
         <h2 className="text-4xl mb-10 mt-5">{username}</h2>
@@ -113,6 +114,7 @@ function Profile() {
           View past workouts
         </Link>
       </div>
+      <Footer />
     </div>
   );
 }

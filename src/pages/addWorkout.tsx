@@ -4,6 +4,7 @@ import NavBar from "@/components/navbar";
 import Image from "next/image";
 import { auth, firestore } from "../lib/firebase.js";
 import { addDoc, collection } from "firebase/firestore";
+import Footer from "@/components/footer";
 
 // declare types
 type FormValues = {
@@ -315,6 +316,7 @@ to manage a form */
           </div>
         </form>
       </div>
+      <Footer />
     </div>
   );
 }

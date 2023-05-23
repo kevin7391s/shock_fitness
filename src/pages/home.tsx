@@ -3,6 +3,7 @@ import NavBar from "@/components/navbar";
 import Image from "next/image";
 import Card from "@/components/card";
 import Link from "next/link";
+import Footer from "@/components/footer";
 
 function home() {
   const cardData1 = [
@@ -43,7 +44,7 @@ function home() {
   ];
   return (
     <div
-      className="flex flex-col  items-center min-h-screen bg-black"
+      className="flex flex-col  items-center min-h-screen bg-black mb-20"
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
@@ -81,12 +82,8 @@ function home() {
       >
         Go to profile!
       </Link>
-      <Link
-        href="/viewWorkouts"
-        className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-3 mb-8 text-md "
-      >
-        View past workouts
-      </Link>
+
+      <Footer />
     </div>
   );
 }

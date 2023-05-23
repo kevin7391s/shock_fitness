@@ -10,6 +10,7 @@ import { auth, firestore } from "../lib/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
 import NavBar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 interface Workout {
   workoutType: string;
@@ -110,6 +111,7 @@ function ViewWorkouts() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
