@@ -57,11 +57,11 @@ function ViewWorkouts() {
 
   return (
     <div
-      className="bg-black min-h-screen text-white"
+      className="flex flex-col bg-black min-h-screen text-white"
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center flex-grow overflow-auto pb-48">
         <Image
           src="/images/viewWorkouts.png"
           alt="viewWorkoutImage"
@@ -70,7 +70,7 @@ function ViewWorkouts() {
           height={100}
         />
 
-        <div className="grid grid-flow-row gap-4 mt-3 ">
+        <div className="grid grid-flow-row gap-4 mt-3">
           {workouts.map((workout, i) => (
             <>
               <h2 className="text-center mt-4">

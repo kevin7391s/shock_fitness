@@ -54,11 +54,11 @@ function Profile() {
 
   return (
     <div
-      className="bg-black min-h-screen text-white"
+      className="flex flex-col min-h-screen bg-black text-white"
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
-      <div className="flex flex-col items-center justify-center min-h-screen mb-20">
+      <div className="flex flex-col items-center justify-center flex-grow mb-20">
         <Image
           src="/images/profile.png"
           alt="Fitness App Logo"
