@@ -66,7 +66,7 @@ function ViewWorkouts() {
           src="/images/viewWorkouts.png"
           alt="viewWorkoutImage"
           className="mt-36"
-          width={400}
+          width={300}
           height={100}
         />
 
