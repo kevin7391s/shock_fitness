@@ -13,6 +13,7 @@ import Image from "next/image";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
 
+//create types for variables
 interface Workout {
   workoutType: string;
   cardioType?: string;
@@ -26,8 +27,10 @@ interface Workout {
 }
 
 function ViewWorkouts() {
+  // this is setting the initial state to workouts, an empty array and when workouts get added it pushes workout objects to the array.
   const [workouts, setWorkouts] = useState<Workout[]>([]);
 
+  // this if for checking user authentication, if user has auth, then query the collection
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -37,6 +40,7 @@ function ViewWorkouts() {
           orderBy("date", "desc")
         );
 
+        // listens for changes in the firestore database and on each change it creates a new array and finds the docs from that collection and pushes it to the new updated workout array and sets the workouts to the new fetched workouts.
         const unsub = onSnapshot(workoutQuery, (snapshot) => {
           const fetchedWorkouts: Workout[] = [];
           snapshot.forEach((doc) =>
