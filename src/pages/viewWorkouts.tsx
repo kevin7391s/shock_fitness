@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   collection,
   query,
   where,
-  onSnapshot,
   Timestamp,
   orderBy,
+  DocumentSnapshot,
+  DocumentData,
+  startAfter,
+  limit,
+  getDocs,
 } from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
@@ -29,37 +33,67 @@ interface Workout {
 function ViewWorkouts() {
   // this is setting the initial state to workouts, an empty array and when workouts get added it pushes workout objects to the array.
   const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const [lastVisible, setLastVisible] =
+    useState<null | DocumentSnapshot<DocumentData>>(null);
 
-  // this if for checking user authentication, if user has auth, then query the collection
+  // This is for checking user authentication, if user has auth, then query the collection
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const workoutQuery = query(
           collection(firestore, "workouts"),
           where("user", "==", user.uid),
-          orderBy("date", "desc")
+          orderBy("date", "desc"),
+          limit(5)
         );
 
-        // listens for changes in the firestore database and on each change it creates a new array and finds the docs from that collection and pushes it to the new updated workout array and sets the workouts to the new fetched workouts.
-        const unsub = onSnapshot(workoutQuery, (snapshot) => {
+        const snapshot = await getDocs(workoutQuery);
+        if (!snapshot.empty) {
           const fetchedWorkouts: Workout[] = [];
-          snapshot.forEach((doc) =>
-            fetchedWorkouts.push(doc.data() as Workout)
-          );
+          snapshot.forEach((doc) => {
+            const data = doc.data() as Workout;
+            fetchedWorkouts.push(data);
+          });
           setWorkouts(fetchedWorkouts);
-        });
-
-        // Clean up the subscription on unmount
-        return () => {
-          unsub();
-        };
+          setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
+        } else {
+          console.log("No workouts");
+        }
       } else {
         console.log("No user logged in");
       }
     });
 
-    return unsubscribe;
+    return unsubscribeAuth;
   }, []);
+
+  const loadMoreWorkouts = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      const nextWorkoutsQuery = query(
+        collection(firestore, "workouts"),
+        where("user", "==", user.uid),
+        orderBy("date", "desc"),
+        startAfter(lastVisible || {}),
+        limit(5)
+      );
+
+      const snapshot = await getDocs(nextWorkoutsQuery);
+      if (!snapshot.empty) {
+        const fetchedWorkouts: Workout[] = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data() as Workout;
+          fetchedWorkouts.push(data);
+        });
+        setWorkouts((prevWorkouts) => [...prevWorkouts, ...fetchedWorkouts]);
+        setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
+      } else {
+        console.log("No more workouts");
+      }
+    } else {
+      console.log("No user logged in");
+    }
+  };
 
   return (
     <div
@@ -78,14 +112,11 @@ function ViewWorkouts() {
 
         <div className="grid grid-flow-row gap-4 mt-3">
           {workouts.map((workout, i) => (
-            <>
+            <React.Fragment key={i}>
               <h2 className="text-center mt-4">
                 {workout.date.toDate().toDateString()}
               </h2>
-              <div
-                key={i}
-                className="workout-box p-4 border border-white rounded"
-              >
+              <div className="workout-box p-4 border border-white rounded">
                 <div className="border-b border-white mb-2">
                   <p>Workout Type: {workout.workoutType}</p>
                 </div>
@@ -113,9 +144,15 @@ function ViewWorkouts() {
                   </>
                 )}
               </div>
-            </>
+            </React.Fragment>
           ))}
         </div>
+        <button
+          className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8"
+          onClick={loadMoreWorkouts}
+        >
+          Load More
+        </button>
       </div>
       <Footer />
     </div>
