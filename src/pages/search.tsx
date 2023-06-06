@@ -42,12 +42,15 @@ function Search() {
         <form onSubmit={handleSearch}>
           <input
             type="text"
-            className="rounded h-auto w-auto text-black "
-            placeholder="Search for a user..."
+            className="rounded h-8 w-96 w-auto text-black ml "
+            placeholder=" Search for a user..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit" className="ml-5">
+          <button
+            type="submit"
+            className=" items-center h-8 w-15  mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-1s px-4 ml-4 rounded "
+          >
             Search
           </button>
         </form>
