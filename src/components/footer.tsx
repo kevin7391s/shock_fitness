@@ -36,7 +36,7 @@ function Footer() {
         style={iconStyle}
         label="Search"
         icon={<SearchIcon />}
-        // no click handler since we have no functionality for this yet
+        onClick={() => handleNavigation("/search")}
       />
       <BottomNavigationAction
         style={iconStyle}
