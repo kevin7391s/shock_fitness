@@ -38,28 +38,33 @@ function Search() {
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          placeholder="Search for a user..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {results.map((user, index) => (
-            <li key={index}>
-              <p>{user.username}</p>
-              {user.profilePic && <img src={user.profilePic} alt="Profile" />}
-              <button>Add Friend</button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="mt-24 ml-10">
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            className="rounded h-auto w-auto text-black "
+            placeholder="Search for a user..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button type="submit" className="ml-5">
+            Search
+          </button>
+        </form>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ul>
+            {results.map((user, index) => (
+              <li key={index}>
+                <p>{user.username}</p>
+                {user.profilePic && <img src={user.profilePic} alt="Profile" />}
+                <button>Add Friend</button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
       <Footer />
     </div>
   );
