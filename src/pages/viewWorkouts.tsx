@@ -116,7 +116,7 @@ function ViewWorkouts() {
               <h2 className="text-center mt-4">
                 {workout.date.toDate().toDateString()}
               </h2>
-              <div className="workout-box p-4 border border-white rounded">
+              <div className="workout-box p-4 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 border border-white rounded text-black">
                 <div className="border-b border-white mb-2">
                   <p>Workout Type: {workout.workoutType}</p>
                 </div>
