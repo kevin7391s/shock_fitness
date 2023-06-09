@@ -42,27 +42,45 @@ function Search() {
         <form onSubmit={handleSearch}>
           <input
             type="text"
-            className="rounded h-auto w-auto text-black "
-            placeholder="Search for a user..."
+            className="rounded h-8 w-96 w-auto text-black ml "
+            placeholder=" Search for a user..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit" className="ml-5">
+          <button
+            type="submit"
+            className=" items-center h-8 w-15  mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-1s px-4 ml-4 rounded "
+          >
             Search
           </button>
         </form>
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <ul>
-            {results.map((user, index) => (
-              <li key={index}>
-                <p>{user.username}</p>
-                {user.profilePic && <img src={user.profilePic} alt="Profile" />}
-                <button>Add Friend</button>
-              </li>
-            ))}
-          </ul>
+          <div className="flex flex-col">
+            <ul>
+              {results.map((user, index) => (
+                <li
+                  key={index}
+                  className="flex justify-start items-center my-2"
+                >
+                  <div className="border-3 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 border-white  rounded p-3  flex items-center space-x-4 text-black">
+                    <p className="mr-10 font-bold">{user.username}</p>
+                    {user.profilePic && (
+                      <img
+                        src={user.profilePic}
+                        alt="Profile"
+                        className="h-8 w-8 "
+                      />
+                    )}
+                    <button className=" w-auto bg-cyan-300 hover:bg-cyan-400 text-black text-xs  py-2 px-3 rounded-full border-1 border-gray-500 shadow-lg ">
+                      Add Friend
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
       <Footer />
