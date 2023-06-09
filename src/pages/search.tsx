@@ -57,21 +57,30 @@ function Search() {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <ul>
-            {results.map((user, index) => (
-              <li
-                key={index}
-                className="border-2 border-white rounded p-4 flex items-center space-x-4"
-              >
-                <div className="flex items-center space-x-4"></div>
-                <p>{user.username}</p>
-                {user.profilePic && <img src={user.profilePic} alt="Profile" />}
-                <button className="items-center h-8 w-15  bg-cyan-300 hover:bg-cyan-400 text-black text-sm font-bold py-1 px-2 rounded">
-                  Add Friend
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className="flex flex-col">
+            <ul>
+              {results.map((user, index) => (
+                <li
+                  key={index}
+                  className="flex justify-start items-center my-2"
+                >
+                  <div className="border-2 border-white rounded p-4 flex items-center space-x-4">
+                    <p>{user.username}</p>
+                    {user.profilePic && (
+                      <img
+                        src={user.profilePic}
+                        alt="Profile"
+                        className="h-8 w-8"
+                      />
+                    )}
+                    <button className="h-8 w-auto bg-cyan-300 hover:bg-cyan-400 text-black text-sm font-bold py-1 px-2 rounded">
+                      Add Friend
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
       <Footer />
