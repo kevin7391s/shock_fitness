@@ -59,10 +59,16 @@ function Search() {
         ) : (
           <ul>
             {results.map((user, index) => (
-              <li key={index}>
+              <li
+                key={index}
+                className="border-2 border-white rounded p-4 flex items-center space-x-4"
+              >
+                <div className="flex items-center space-x-4"></div>
                 <p>{user.username}</p>
                 {user.profilePic && <img src={user.profilePic} alt="Profile" />}
-                <button>Add Friend</button>
+                <button className="items-center h-8 w-15  bg-cyan-300 hover:bg-cyan-400 text-black text-sm font-bold py-1 px-2 rounded">
+                  Add Friend
+                </button>
               </li>
             ))}
           </ul>
