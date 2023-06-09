@@ -64,16 +64,16 @@ function Search() {
                   key={index}
                   className="flex justify-start items-center my-2"
                 >
-                  <div className="border-2 border-white rounded p-4 flex items-center space-x-4">
-                    <p>{user.username}</p>
+                  <div className="border-3 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 border-white  rounded p-3  flex items-center space-x-4 text-black">
+                    <p className="mr-10 font-bold">{user.username}</p>
                     {user.profilePic && (
                       <img
                         src={user.profilePic}
                         alt="Profile"
-                        className="h-8 w-8"
+                        className="h-8 w-8 "
                       />
                     )}
-                    <button className="h-8 w-auto bg-cyan-300 hover:bg-cyan-400 text-black text-sm font-bold py-1 px-2 rounded">
+                    <button className=" w-auto bg-cyan-300 hover:bg-cyan-400 text-black text-xs  py-2 px-3 rounded-full border-1 border-gray-500 shadow-lg ">
                       Add Friend
                     </button>
                   </div>
