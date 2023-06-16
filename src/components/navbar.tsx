@@ -51,8 +51,8 @@ export default function NavBar() {
                 </p>
               </h2>
             </a>
-            <div className="flex items-center mr-4">
-              <div className="">
+            <div className="flex items-center mr-1">
+              <div className="mr-4">
                 <Notifications />
               </div>
               <button
