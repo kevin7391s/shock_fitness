@@ -24,6 +24,7 @@ function signUp() {
     setError("");
     // if username does not exist and has complete form, add user to firestore
     try {
+      // firebases syntax to retreive a document from a collection
       const usernameDoc = await getDoc(doc(firestore, "usernames", username));
       if (usernameDoc.exists()) {
         setError("Username is already taken");
@@ -56,8 +57,6 @@ function signUp() {
       setPassword("");
       if (error instanceof Error) {
         setError(error.message);
-      } else {
-        setError("An error occurred");
       }
     }
   };
