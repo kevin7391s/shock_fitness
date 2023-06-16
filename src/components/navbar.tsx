@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import Image from "next/image";
-
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import Logout from "./logout";
 
 let defaultImage = "/images/exerciseMan.jpg";
@@ -52,6 +52,9 @@ export default function NavBar() {
               </h2>
             </a>
             <div className="3xl:hidden">
+              <NotificationsIcon
+                style={{ color: "white", marginRight: "1em" }}
+              />
               <button
                 className=" p-2 text-white rounded-3xl outline-none focus:border-white focus:border"
                 onClick={() => setNavbar(!navbar)}
