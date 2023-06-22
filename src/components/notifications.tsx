@@ -19,35 +19,8 @@ function NotificationDropdown() {
         />
       </div>
       {open && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-800">
-          <div
-            className="py-1"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="options-menu"
-          >
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-white hover:bg-gray-700"
-              role="menuitem"
-            >
-              Notification 1
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-white hover:bg-gray-700"
-              role="menuitem"
-            >
-              Notification 2
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-white hover:bg-gray-700"
-              role="menuitem"
-            >
-              Notification 3
-            </a>
-          </div>
+        <div className="origin-top-right absolute right-0 mt-2 w-56 h-48 rounded-md shadow-lg bg-gray-800">
+          <p className="mt-5 ml-5 text-lg text-white"> No new notifications</p>
         </div>
       )}
     </div>
