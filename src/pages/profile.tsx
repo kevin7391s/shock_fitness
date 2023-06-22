@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
-import { query, where, getDocs, collection } from "firebase/firestore";
+import {
+  query,
+  where,
+  getDocs,
+  collection,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase";
 import NavBar from "@/components/navbar";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/footer";
+import ChangeProfile from "./ChangeProfile";
 
 function Profile() {
   const [username, setUsername] = useState("");
@@ -17,7 +25,15 @@ function Profile() {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setUsername(user.displayName || "User");
+        // Retrieve the profile data from the database
+        const profileDocRef = doc(firestore, "profiles", user.uid);
+        const profileDocSnapshot = await getDoc(profileDocRef);
+        if (profileDocSnapshot.exists()) {
+          const profileData = profileDocSnapshot.data();
+          setUsername(profileData.username);
+        } else {
+          setUsername(user.displayName || "User");
+        }
 
         // query the workouts collection for documents where the user id matches the current user's id
         const q = query(
@@ -112,6 +128,12 @@ function Profile() {
           className="flex flex-col items-center mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
         >
           View past workouts
+        </Link>
+        <Link
+          href="/ChangeProfile"
+          className="flex flex-col items-center mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
+        >
+          Change Profile
         </Link>
       </div>
       <Footer />
