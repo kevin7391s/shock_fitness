@@ -49,7 +49,7 @@ function Footer() {
         style={iconStyle}
         label="Friends"
         icon={<GroupIcon />}
-        onClick={() => handleNavigation("/profile")}
+        onClick={() => handleNavigation("/underConstruction")}
       />
     </BottomNavigation>
   );
