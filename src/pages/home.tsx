@@ -81,7 +81,7 @@ function home() {
           href="/profile"
           className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-36 "
         >
-          Go to profile!
+          Go to profile!!
         </Link>
       </div>
       <Footer />
