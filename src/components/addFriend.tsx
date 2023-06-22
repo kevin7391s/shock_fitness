@@ -1,14 +1,15 @@
 import { auth, firestore } from "../lib/firebase.js";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 // sender and receiver are the userIds of the two users
-const addFriend = async (sender, receiver) => {
+const addFriend = async (sender: string, receiver: string) => {
   // get reference to the friendship document
-  const friendshipRef = firestore.doc(`friendships/${sender}_${receiver}`);
+  const friendshipRef = doc(firestore, "friendships", `${sender}_${receiver}`);
 
   // get the friendship document
-  const friendshipDoc = await friendshipRef.get();
+  const friendshipDoc = await getDoc(friendshipRef);
 
-  if (friendshipDoc.exists) {
+  if (friendshipDoc.exists()) {
     const status = friendshipDoc.data().status;
 
     if (status === "friends" || status === "pending") {
@@ -18,7 +19,7 @@ const addFriend = async (sender, receiver) => {
   }
   // if the code reaches here, it means a friend request can be sent
   // create or update the friendship document to reflect the new status
-  await friendshipRef.set({
+  await setDoc(friendshipRef, {
     status: "pending",
     sender,
     receiver,
