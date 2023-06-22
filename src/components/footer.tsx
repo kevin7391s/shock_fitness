@@ -3,6 +3,7 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import GroupIcon from "@mui/icons-material/Group";
 import { useRouter } from "next/router";
 
 function Footer() {
@@ -43,6 +44,12 @@ function Footer() {
         label="Profile"
         icon={<AccountCircleIcon />}
         onClick={() => handleNavigation("/profile")}
+      />
+      <BottomNavigationAction
+        style={iconStyle}
+        label="Friends"
+        icon={<GroupIcon />}
+        onClick={() => handleNavigation("/underConstruction")}
       />
     </BottomNavigation>
   );
