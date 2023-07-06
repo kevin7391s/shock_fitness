@@ -3,6 +3,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../lib/firebase.js";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { UserContext } from "@/context/userContext.jsx";
 
 interface User {
   username: string;
