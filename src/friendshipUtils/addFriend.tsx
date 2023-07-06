@@ -2,7 +2,7 @@ import { auth, firestore } from "../lib/firebase.js";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 // sender and receiver are the userIds of the two users
-const addFriend = async (sender: string, receiver: string) => {
+export const addFriend = async (sender: string, receiver: string) => {
   // get reference to the friendship document
   const friendshipRef = doc(firestore, "friendships", `${sender}_${receiver}`);
 

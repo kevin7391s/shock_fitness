@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../lib/firebase.js";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { UserContext } from "@/context/userContext.jsx";
+import { UserContext } from "@/context/userContext";
+import { addFriend } from "@/friendshipUtils/addFriend";
 
 interface User {
   username: string;
@@ -12,6 +13,8 @@ interface User {
 }
 
 function Search() {
+  const currentUser = useContext(UserContext);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
@@ -27,8 +30,10 @@ function Search() {
     const querySnapshot = await getDocs(q);
     const foundUsers: User[] = [];
     querySnapshot.forEach((doc) => {
-      foundUsers.push(doc.data() as User);
+      foundUsers.push({ ...doc.data(), id: doc.id } as User);
     });
+
+    console.log(foundUsers); // add this log
 
     setResults(foundUsers);
     setLoading(false);
@@ -75,7 +80,17 @@ function Search() {
                         className="h-8 w-8 "
                       />
                     )}
-                    <button className=" w-auto bg-cyan-300 hover:bg-cyan-400 text-black text-xs  py-2 px-3 rounded-full border-1 border-gray-500 shadow-lg ">
+                    <button
+                      className=" w-auto bg-cyan-300 hover:bg-cyan-400 text-black text-xs  py-2 px-3 rounded-full border-1 border-gray-500 shadow-lg "
+                      onClick={() => {
+                        if (currentUser) {
+                          addFriend(currentUser.uid, user.id);
+                          console.log(currentUser.uid, user.id);
+                        } else {
+                          console.error("Current user is not defined");
+                        }
+                      }} // Add friend request from current user to this user
+                    >
                       Add Friend
                     </button>
                   </div>
