@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 
 interface User {
   username: string;
+  id: string; // include the user id
   profilePic?: string; // URL of the profile picture
 }
 
