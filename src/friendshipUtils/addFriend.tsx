@@ -2,7 +2,10 @@ import { auth, firestore } from "../lib/firebase.js";
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 
 // sender and receiver are the userIds of the two users
-export const addFriend = async (sender: string, receiver: string) => {
+export const addFriend = async (
+  sender: string,
+  receiver: string
+): Promise<string> => {
   // get reference to the friendship document
   const friendshipRef = doc(firestore, "friendships", `${sender}_${receiver}`);
 
@@ -14,7 +17,7 @@ export const addFriend = async (sender: string, receiver: string) => {
 
     if (status === "friends" || status === "pending") {
       // can't send another friend request
-      return;
+      return "";
     }
   }
 
@@ -33,4 +36,6 @@ export const addFriend = async (sender: string, receiver: string) => {
     sender,
     receiver,
   });
+
+  return receiver; // always return receiver id as a string
 };

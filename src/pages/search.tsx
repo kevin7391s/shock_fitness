@@ -108,9 +108,20 @@ function Search() {
                     )}
                     <button
                       className=" w-auto bg-cyan-300 hover:bg-cyan-400 text-black text-xs  py-2 px-3 rounded-full border-1 border-gray-500 shadow-lg "
-                      onClick={() => {
-                        if (currentUser) {
-                          addFriend(currentUser.uid, user.id);
+                      onClick={async () => {
+                        if (currentUser?.uid && currentUserData) {
+                          // <-- add optional chaining here
+                          const newFriendId = await addFriend(
+                            currentUser.uid,
+                            user.id
+                          );
+                          setCurrentUserData({
+                            ...currentUserData,
+                            pendingRequests: [
+                              ...(currentUserData.pendingRequests || []),
+                              newFriendId,
+                            ],
+                          });
                         } else {
                           console.error("Current user is not defined");
                         }
