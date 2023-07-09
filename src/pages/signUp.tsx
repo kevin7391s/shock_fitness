@@ -14,6 +14,8 @@ function signUp() {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
   const [error, setError] = useState("");
   const isInvalid = password == "" || email == "";
 
@@ -41,6 +43,8 @@ function signUp() {
           username,
           fullname,
           email,
+          height,
+          weight,
         });
 
         await updateProfile(user, {
@@ -55,6 +59,8 @@ function signUp() {
       setFullname("");
       setEmail("");
       setPassword("");
+      setHeight("");
+      setWeight("");
       if (error instanceof Error) {
         setError(error.message);
       }
@@ -68,7 +74,7 @@ function signUp() {
       style={{ backgroundColor: "#121212" }}
     >
       <div
-        className=" flex flex-col   relative w-4/5 h-4/5 mx-auto  overflow-hidden bg-gray-200  rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20"
+        className=" flex flex-col   relative w-4/5 h-5/6 mx-auto  overflow-hidden bg-gray-200  rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20"
         style={{ backgroundColor: "#424242" }}
       >
         <div className="flex flex-col items-center">
@@ -108,6 +114,32 @@ function signUp() {
             value={fullname}
           />
         </form>
+        <p className="ml-4 text-sm text-white mb-1">Height (cm)</p>
+        <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
+          <input
+            aria-label="Enter your height"
+            type="text"
+            placeholder="Enter height"
+            className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            name="height"
+            onChange={({ target }) => setHeight(target.value)}
+            value={height}
+          />
+        </form>
+
+        <p className="ml-4 text-sm text-white mb-1">Weight (kg)</p>
+        <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
+          <input
+            aria-label="Enter your weight"
+            type="text"
+            placeholder="Enter weight"
+            className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            name="weight"
+            onChange={({ target }) => setWeight(target.value)}
+            value={weight}
+          />
+        </form>
+
         <p className="ml-4 text-sm text-white mb-1 ">Email</p>
         <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
           <input
