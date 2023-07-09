@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import {
+  onSnapshot,
   query,
   where,
   getDocs,
@@ -25,15 +26,12 @@ function Profile() {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        // Retrieve the profile data from the database
-        const profileDocRef = doc(firestore, "profiles", user.uid);
-        const profileDocSnapshot = await getDoc(profileDocRef);
-        if (profileDocSnapshot.exists()) {
-          const profileData = profileDocSnapshot.data();
-          setUsername(profileData.username);
-        } else {
-          setUsername(user.displayName || "User");
-        }
+        const docRef = doc(firestore, "users", user.uid);
+        onSnapshot(docRef, (doc) => {
+          if (doc.exists()) {
+            setUsername(doc.data().username || "User");
+          }
+        });
 
         // query the workouts collection for documents where the user id matches the current user's id
         const q = query(
@@ -87,6 +85,12 @@ function Profile() {
           <img src="/images/exerciseMan.jpg" alt="Profile picture" />
         </div>
         <h2 className="text-2xl mb-10 mt-5">{username}</h2>
+        <Link
+          href="/ChangeProfile"
+          className="flex flex-col items-center mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
+        >
+          Change Profile
+        </Link>
         <div className="grid grid-cols-2 gap-4">
           <div
             className="p-4 bg-gray-800 rounded shadow-lg"
@@ -128,12 +132,6 @@ function Profile() {
           className="flex flex-col items-center mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
         >
           View past workouts
-        </Link>
-        <Link
-          href="/ChangeProfile"
-          className="flex flex-col items-center mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
-        >
-          Change Profile
         </Link>
       </div>
       <Footer />

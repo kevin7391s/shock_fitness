@@ -1,75 +1,89 @@
-import React, { useState } from "react";
-import { collection, doc, setDoc } from "firebase/firestore";
-import { firestore } from "../lib/firebase";
+import React, { useState, useEffect } from "react";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { auth, firestore } from "../lib/firebase";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Link from "next/link";
 
 function ChangeProfile() {
   const [username, setUsername] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
+  const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState(0);
 
-  const handleSaveProfile = async () => {
-    // Create a new document in the "profiles" collection with the updated profile data
-    try {
-      const profileDocRef = doc(collection(firestore, "profiles"));
-      await setDoc(profileDocRef, {
-        username,
-        height,
-        weight,
-      });
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userDocRef = doc(firestore, "users", user.uid);
+        const userDocSnapshot = await getDoc(userDocRef);
+        if (userDocSnapshot.exists()) {
+          const userData = userDocSnapshot.data();
+          setUsername(userData.username);
+          setWeight(userData.weight);
+          setHeight(userData.height);
+        }
+      }
+    });
+  }, []);
 
-      // Reset the form fields
-      setUsername("");
-      setHeight("");
-      setWeight("");
-
-      console.log("Profile saved successfully!");
-    } catch (error) {
-      console.error("Error saving profile:", error);
+  const updateProfile = async () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      const userDocRef = doc(firestore, "users", user.uid);
+      await setDoc(userDocRef, { username, weight, height }, { merge: true });
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
+    <div
+      className="flex flex-col min-h-screen bg-black text-white"
+      style={{ backgroundColor: "#121212" }}
+    >
       <NavBar />
-      <h2 className="text-2xl mb-8">Change Profile</h2>
-      <form className="flex flex-col gap-4">
-        <div>
-          <label className="text-sm">Username:</label>
+      <div className="flex flex-col items-center justify-center flex-grow mb-20">
+        <h2 className="text-2xl mb-10 mt-5">Change Profile</h2>
+        <div className="mb-4">
+          <label className="block text-white mb-2">Username: </label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="p-2 border rounded"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div>
-          <label className="text-sm">Height:</label>
+        <div className="mb-4">
+          <label className="block text-white mb-2">Weight: </label>
           <input
-            type="text"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-            className="p-2 border rounded"
-          />
-        </div>
-        <div>
-          <label className="text-sm">Weight:</label>
-          <input
-            type="text"
+            type="number"
             value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            className="p-2 border rounded"
+            onChange={(e) => setWeight(+e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-white mb-2">Height: </label>
+          <input
+            type="number"
+            value={height}
+            onChange={(e) => setHeight(+e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
         <button
-          type="button"
-          onClick={handleSaveProfile}
-          className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
+          onClick={updateProfile}
+          className="flex flex-col items-center mt-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
         >
-          Save Profile
+          Update Profile
         </button>
-      </form>
+        <Link
+          href="/profile"
+          className="flex flex-col items-center mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
+        >
+          Go back to profile
+        </Link>
+      </div>
       <Footer />
     </div>
   );
