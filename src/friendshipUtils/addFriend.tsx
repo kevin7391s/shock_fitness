@@ -39,11 +39,7 @@ export const addFriend = async (
   });
 
   // Add sending notification here, after updating the friendship document
-  await sendNotification(
-    receiver, // the user who should receive the notification
-    "friendRequest", // the type of the notification
-    `${sender} sent you a friend request.` // the content of the notification
-  );
+  await sendNotification(sender, receiver, "friend_request"); // Send a notification when a friend request is sent
 
   return receiver; // always return receiver id as a string
 };

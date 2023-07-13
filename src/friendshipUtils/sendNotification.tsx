@@ -1,18 +1,34 @@
-import { auth, firestore } from "../lib/firebase.js";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, getDoc, collection } from "firebase/firestore";
+import { firestore } from "../lib/firebase.js";
 
 export const sendNotification = async (
-  userId: string,
-  type: string,
-  content: string
+  senderId: string,
+  receiverId: string,
+  type: string
 ) => {
-  const notificationsRef = collection(firestore, "notifications");
+  // fetch the sender's user document
+  const senderRef = doc(firestore, "users", senderId);
+  const senderDoc = await getDoc(senderRef);
 
-  await addDoc(notificationsRef, {
-    userId,
-    type,
-    content,
+  if (!senderDoc.exists()) {
+    throw new Error("Sender not found");
+  }
+
+  const senderData = senderDoc.data();
+
+  if (!senderData) {
+    throw new Error("Sender data not found");
+  }
+
+  const senderUsername = senderData.username;
+
+  // create the notification document
+  const notificationRef = doc(collection(firestore, "notifications"));
+  await setDoc(notificationRef, {
+    userId: receiverId,
+    content: `${senderUsername} sent you a friend request.`,
     status: "unread",
-    timestamp: serverTimestamp(),
+    timestamp: new Date(),
+    type,
   });
 };
