@@ -2,16 +2,16 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../lib/firebase.js";
 
 interface Notification {
-  id: string; // the id of the notification document
-  receiver: string; // the id of the user who is to receive this notification
-  sender: string; // the id of the user who sent this notification
-  type: "friend_request"; // the type of the notification
-  status: "pending" | "accepted" | "declined"; // the status of the notification
+  id: string;
+  content: string;
+  status: string;
+  type: string;
+  userId: string;
 }
 
 export const fetchNotifications = async (userId: string) => {
   const notificationsRef = collection(firestore, "notifications");
-  const q = query(notificationsRef, where("receiver", "==", userId));
+  const q = query(notificationsRef, where("userId", "==", userId));
 
   const querySnapshot = await getDocs(q);
   const notifications: Notification[] = [];
