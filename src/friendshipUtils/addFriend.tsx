@@ -1,5 +1,6 @@
 import { auth, firestore } from "../lib/firebase.js";
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { sendNotification } from "./sendNotification";
 
 // sender and receiver are the userIds of the two users
 export const addFriend = async (
@@ -36,6 +37,9 @@ export const addFriend = async (
     sender,
     receiver,
   });
+
+  // Add sending notification here, after updating the friendship document
+  await sendNotification(sender, receiver, "friend_request"); // Send a notification when a friend request is sent
 
   return receiver; // always return receiver id as a string
 };
