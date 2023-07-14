@@ -56,7 +56,7 @@ function NotificationDropdown() {
                   <div className="flex space-x-4 mb-5">
                     <AcceptFriendRequest
                       senderId={notification.senderId}
-                      receiverId={notification.userId}
+                      receiverId={notification.receiverId}
                     />
                     <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                       Decline
