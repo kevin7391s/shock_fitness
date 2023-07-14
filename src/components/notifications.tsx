@@ -40,15 +40,26 @@ function NotificationDropdown() {
           onClick={handleOpen}
         />
       </div>
+
       {open && (
         <div className="origin-top-right absolute right-0 mt-2 w-56 h-48 rounded-md shadow-lg bg-gray-800">
           {notifications.length === 0 ? (
             <p className="mt-5 ml-5 text-lg text-white">No new notifications</p>
           ) : (
             notifications.map((notification, index) => (
-              <p className="mt-5 ml-5 text-lg text-white" key={index}>
-                {notification.content}
-              </p>
+              <div className="mt-5 ml-5 text-lg text-white" key={index}>
+                <p>{notification.content}</p>
+                {notification.type === "friend_request" && (
+                  <div className="flex space-x-4">
+                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                      Accept
+                    </button>
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                      Decline
+                    </button>
+                  </div>
+                )}
+              </div>
             ))
           )}
         </div>
@@ -56,5 +67,4 @@ function NotificationDropdown() {
     </div>
   );
 }
-
 export default NotificationDropdown;
