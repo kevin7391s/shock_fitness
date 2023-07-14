@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "@/context/userContext";
 import { fetchNotifications } from "@/friendshipUtils/fetchNotifications";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import AcceptFriendRequest from "@/friendshipUtils/acceptFriendRequest";
 
 interface Notification {
   id: string;
@@ -9,6 +10,8 @@ interface Notification {
   status: string;
   type: string;
   userId: string;
+  senderId: string;
+  receiverId: string;
 }
 
 function NotificationDropdown() {
@@ -51,9 +54,10 @@ function NotificationDropdown() {
                 <p>{notification.content}</p>
                 {notification.type === "friend_request" && (
                   <div className="flex space-x-4 mb-5">
-                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                      Accept
-                    </button>
+                    <AcceptFriendRequest
+                      senderId={notification.senderId}
+                      receiverId={notification.userId}
+                    />
                     <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                       Decline
                     </button>
