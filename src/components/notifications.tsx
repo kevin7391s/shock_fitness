@@ -42,7 +42,7 @@ function NotificationDropdown() {
       </div>
 
       {open && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-800">
+        <div className="origin-top-right absolute right-0 mt-2 w-64 sm:w-96 rounded-md shadow-lg bg-gray-800">
           {notifications.length === 0 ? (
             <p className="mt-5 ml-5 text-lg text-white">No new notifications</p>
           ) : (
@@ -50,7 +50,7 @@ function NotificationDropdown() {
               <div className="mt-5 ml-5 text-lg text-white" key={index}>
                 <p>{notification.content}</p>
                 {notification.type === "friend_request" && (
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-4 mb-5">
                     <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                       Accept
                     </button>
