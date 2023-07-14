@@ -42,7 +42,7 @@ function NotificationDropdown() {
       </div>
 
       {open && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 h-48 rounded-md shadow-lg bg-gray-800">
+        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-800">
           {notifications.length === 0 ? (
             <p className="mt-5 ml-5 text-lg text-white">No new notifications</p>
           ) : (
