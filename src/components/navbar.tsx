@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { auth } from "../lib/firebase";
 import Image from "next/image";
 import Notifications from "./notifications";
 import Logout from "./logout";
+import { firestore } from "../lib/firebase";
 
 let defaultImage = "/images/exerciseMan.jpg";
-let name = "Guest";
+
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const [username, setUsername] = useState("Guest");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
+    const unSubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setUsername(user.displayName || "User");
+        const userDocRef = doc(firestore, "users", user.uid);
+        const userDocSnapshot = await getDoc(userDocRef);
+        if (userDocSnapshot.exists()) {
+          const userData = userDocSnapshot.data();
+          setUsername(userData.username || "User");
+        }
         setIsLoggedIn(true);
       } else {
         setUsername("Guest");

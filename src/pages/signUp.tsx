@@ -14,8 +14,8 @@ function signUp() {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState(0);
+  const [weight, setWeight] = useState(0);
   const [error, setError] = useState("");
   const isInvalid = password == "" || email == "";
 
@@ -59,8 +59,8 @@ function signUp() {
       setFullname("");
       setEmail("");
       setPassword("");
-      setHeight("");
-      setWeight("");
+      setHeight(0);
+      setWeight(0);
       if (error instanceof Error) {
         setError(error.message);
       }
@@ -74,7 +74,7 @@ function signUp() {
       style={{ backgroundColor: "#121212" }}
     >
       <div
-        className=" flex flex-col   relative w-4/5 h-5/6 mx-auto  overflow-hidden bg-gray-200  rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20"
+        className=" flex flex-col   relative w-4/5 h-4/5 mx-auto  overflow-hidden bg-gray-200  rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20"
         style={{ backgroundColor: "#424242" }}
       >
         <div className="flex flex-col items-center">
@@ -90,8 +90,8 @@ function signUp() {
         {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
         <div className="relative"></div>
 
-        <p className="ml-4 text-sm text-white mb-1 ">Username</p>
         <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
+          <p className="ml-4 text-sm text-white mb-1 ">Username</p>
           <input
             aria-label="Enter your Username"
             type="text"
@@ -101,9 +101,8 @@ function signUp() {
             onChange={({ target }) => setUsername(target.value)}
             value={username}
           />
-        </form>
-        <p className="ml-4 text-sm text-white mb-1 ">Full name</p>
-        <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
+
+          <p className="ml-4 text-sm text-white mb-1 ">Full name</p>
           <input
             aria-label="Enter your name"
             type="text"
@@ -113,35 +112,8 @@ function signUp() {
             onChange={({ target }) => setFullname(target.value)}
             value={fullname}
           />
-        </form>
-        <p className="ml-4 text-sm text-white mb-1">Height (cm)</p>
-        <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
-          <input
-            aria-label="Enter your height"
-            type="text"
-            placeholder="Enter height"
-            className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary rounded mb-4"
-            name="height"
-            onChange={({ target }) => setHeight(target.value)}
-            value={height}
-          />
-        </form>
 
-        <p className="ml-4 text-sm text-white mb-1">Weight (kg)</p>
-        <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
-          <input
-            aria-label="Enter your weight"
-            type="text"
-            placeholder="Enter weight"
-            className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary rounded mb-4"
-            name="weight"
-            onChange={({ target }) => setWeight(target.value)}
-            value={weight}
-          />
-        </form>
-
-        <p className="ml-4 text-sm text-white mb-1 ">Email</p>
-        <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
+          <p className="ml-4 text-sm text-white mb-1 ">Email</p>
           <input
             aria-label="Enter your Email"
             type="email"
@@ -151,9 +123,8 @@ function signUp() {
             onChange={({ target }) => setEmail(target.value)}
             value={email}
           />
-        </form>
-        <p className="ml-4 text-sm text-white mb-1 ">Password</p>
-        <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
+
+          <p className="ml-4 text-sm text-white mb-1 ">Password</p>
           <input
             aria-label="Enter your password"
             type="password"
@@ -163,11 +134,34 @@ function signUp() {
             onChange={({ target }) => setPassword(target.value)}
             value={password}
           />
+
+          <p className="ml-4 text-sm text-white mb-1 ">Height</p>
+          <input
+            aria-label="Enter your height"
+            type="number"
+            placeholder="Enter height"
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            name="height"
+            onChange={({ target }) => setHeight(+target.value)}
+            value={height}
+          />
+
+          <p className="ml-4 text-sm text-white mb-1 ">Weight</p>
+          <input
+            aria-label="Enter your weight"
+            type="number"
+            placeholder="Enter weight"
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            name="weight"
+            onChange={({ target }) => setWeight(+target.value)}
+            value={weight}
+          />
+
           <div className="flex flex-col items-center ">
             <button
               disabled={isInvalid}
               type="submit"
-              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mt-20 mb-5"
+              className={`bg-cyan-300 hover:bg-cyan-300 text-black font-bold py-2 px-4 rounded mt-4 mb-5"
               ${isInvalid && " opacity-50"}`}
             >
               Submit

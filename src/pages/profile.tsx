@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
-import { query, where, getDocs, collection } from "firebase/firestore";
+import {
+  onSnapshot,
+  query,
+  where,
+  getDocs,
+  collection,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { auth, firestore } from "../lib/firebase";
 import NavBar from "@/components/navbar";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/footer";
+import ChangeProfile from "./ChangeProfile";
 
 function Profile() {
   const [username, setUsername] = useState("");
@@ -17,7 +26,12 @@ function Profile() {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setUsername(user.displayName || "User");
+        const docRef = doc(firestore, "users", user.uid);
+        onSnapshot(docRef, (doc) => {
+          if (doc.exists()) {
+            setUsername(doc.data().username || "User");
+          }
+        });
 
         // query the workouts collection for documents where the user id matches the current user's id
         const q = query(
@@ -71,6 +85,12 @@ function Profile() {
           <img src="/images/exerciseMan.jpg" alt="Profile picture" />
         </div>
         <h2 className="text-2xl mb-10 mt-5">{username}</h2>
+        <Link
+          href="/ChangeProfile"
+          className="flex flex-col items-center mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
+        >
+          Change Profile
+        </Link>
         <div className="grid grid-cols-2 gap-4">
           <div
             className="p-4 bg-gray-800 rounded shadow-lg"
