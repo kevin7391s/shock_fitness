@@ -26,6 +26,8 @@ export const sendNotification = async (
   const notificationRef = doc(collection(firestore, "notifications"));
   await setDoc(notificationRef, {
     userId: receiverId,
+    senderId,
+    receiverId,
     content: `${senderUsername} sent you a friend request.`,
     status: "unread",
     timestamp: new Date(),

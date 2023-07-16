@@ -2,6 +2,8 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "@/context/userContext";
 import { fetchNotifications } from "@/friendshipUtils/fetchNotifications";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import AcceptFriendRequest from "@/friendshipUtils/acceptFriendRequest";
+import DeclineFriendRequest from "@/friendshipUtils/declineFriendRequest";
 
 interface Notification {
   id: string;
@@ -9,6 +11,8 @@ interface Notification {
   status: string;
   type: string;
   userId: string;
+  senderId: string;
+  receiverId: string;
 }
 
 function NotificationDropdown() {
@@ -40,15 +44,28 @@ function NotificationDropdown() {
           onClick={handleOpen}
         />
       </div>
+
       {open && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 h-48 rounded-md shadow-lg bg-gray-800">
+        <div className="origin-top-right absolute right-0 mt-2 w-64 sm:w-96 rounded-md shadow-lg bg-gray-800">
           {notifications.length === 0 ? (
             <p className="mt-5 ml-5 text-lg text-white">No new notifications</p>
           ) : (
             notifications.map((notification, index) => (
-              <p className="mt-5 ml-5 text-lg text-white" key={index}>
-                {notification.content}
-              </p>
+              <div className="mt-5 ml-5 text-lg text-white" key={index}>
+                <p>{notification.content}</p>
+                {notification.type === "friend_request" && (
+                  <div className="flex space-x-4 mb-5">
+                    <AcceptFriendRequest
+                      senderId={notification.senderId}
+                      receiverId={notification.receiverId}
+                    />
+                    <DeclineFriendRequest
+                      senderId={notification.senderId}
+                      receiverId={notification.receiverId}
+                    />
+                  </div>
+                )}
+              </div>
             ))
           )}
         </div>
@@ -56,5 +73,4 @@ function NotificationDropdown() {
     </div>
   );
 }
-
 export default NotificationDropdown;

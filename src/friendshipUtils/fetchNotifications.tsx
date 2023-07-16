@@ -7,6 +7,8 @@ interface Notification {
   status: string;
   type: string;
   userId: string;
+  senderId: string;
+  receiverId: string;
 }
 
 export const fetchNotifications = async (userId: string) => {
