@@ -3,6 +3,7 @@ import { UserContext } from "@/context/userContext";
 import { fetchNotifications } from "@/friendshipUtils/fetchNotifications";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AcceptFriendRequest from "@/friendshipUtils/acceptFriendRequest";
+import DeclineFriendRequest from "@/friendshipUtils/declineFriendRequest";
 
 interface Notification {
   id: string;
@@ -58,9 +59,10 @@ function NotificationDropdown() {
                       senderId={notification.senderId}
                       receiverId={notification.receiverId}
                     />
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                      Decline
-                    </button>
+                    <DeclineFriendRequest
+                      senderId={notification.senderId}
+                      receiverId={notification.receiverId}
+                    />
                   </div>
                 )}
               </div>
