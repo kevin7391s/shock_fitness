@@ -1,4 +1,4 @@
-import { doc, updateDoc, arrayRemove } from "firebase/firestore";
+import { doc, updateDoc, arrayRemove, deleteDoc } from "firebase/firestore";
 import { firestore } from "../lib/firebase.js";
 
 interface Props {

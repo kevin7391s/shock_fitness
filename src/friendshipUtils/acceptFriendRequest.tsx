@@ -1,4 +1,10 @@
-import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  deleteDoc,
+} from "firebase/firestore";
 import { firestore } from "../lib/firebase.js";
 
 // Define the type for props
