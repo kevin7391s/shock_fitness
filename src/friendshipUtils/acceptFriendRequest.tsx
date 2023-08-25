@@ -11,9 +11,14 @@ import { firestore } from "../lib/firebase.js";
 interface Props {
   senderId: string;
   receiverId: string;
+  notificationId: string;
 }
 
-const AcceptFriendRequest: React.FC<Props> = ({ senderId, receiverId }) => {
+const AcceptFriendRequest: React.FC<Props> = ({
+  senderId,
+  receiverId,
+  notificationId,
+}) => {
   const handleAccept = async () => {
     // Get references to the friendship document and both user documents
     const friendshipRef = doc(
