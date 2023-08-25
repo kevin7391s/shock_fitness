@@ -44,6 +44,8 @@ const AcceptFriendRequest: React.FC<Props> = ({
     });
 
     // Here, delete notification
+    const notificationRef = doc(firestore, "notifications", notificationId);
+    await deleteDoc(notificationRef);
   };
 
   return (

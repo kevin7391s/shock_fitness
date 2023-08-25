@@ -30,6 +30,8 @@ const DeclineFriendRequest: React.FC<Props> = ({
     });
 
     //delete the notification document
+    const notificationRef = doc(firestore, "notifications", notificationId);
+    await deleteDoc(notificationRef);
   };
 
   return (
