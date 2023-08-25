@@ -58,10 +58,12 @@ function NotificationDropdown() {
                     <AcceptFriendRequest
                       senderId={notification.senderId}
                       receiverId={notification.receiverId}
+                      notificationId={notification.id}
                     />
                     <DeclineFriendRequest
                       senderId={notification.senderId}
                       receiverId={notification.receiverId}
+                      notificationId={notification.id}
                     />
                   </div>
                 )}
