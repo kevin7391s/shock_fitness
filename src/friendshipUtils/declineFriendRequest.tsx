@@ -5,12 +5,14 @@ interface Props {
   senderId: string;
   receiverId: string;
   notificationId: string;
+  onNotificationRemoved: (id: string) => void;
 }
 
 const DeclineFriendRequest: React.FC<Props> = ({
   senderId,
   receiverId,
   notificationId,
+  onNotificationRemoved,
 }) => {
   const handleDecline = async () => {
     // Get references to the friendship document and the receiver's user document
@@ -32,6 +34,9 @@ const DeclineFriendRequest: React.FC<Props> = ({
     //delete the notification document
     const notificationRef = doc(firestore, "notifications", notificationId);
     await deleteDoc(notificationRef);
+
+    //update local state
+    onNotificationRemoved(notificationId);
   };
 
   return (
