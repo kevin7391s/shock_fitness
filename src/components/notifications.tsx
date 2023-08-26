@@ -65,6 +65,7 @@ function NotificationDropdown() {
                       senderId={notification.senderId}
                       receiverId={notification.receiverId}
                       notificationId={notification.id}
+                      onNotificationRemoved={handleNotificationRemoval}
                     />
                     <DeclineFriendRequest
                       senderId={notification.senderId}
