@@ -24,6 +24,12 @@ function NotificationDropdown() {
     setOpen(!open);
   };
 
+  const handleNotificationRemoval = (notificationId: string) => {
+    setNotifications((prevNotifications) =>
+      prevNotifications.filter((notif) => notif.id !== notificationId)
+    );
+  };
+
   useEffect(() => {
     const fetchAndSetNotifications = async () => {
       if (currentUser) {
