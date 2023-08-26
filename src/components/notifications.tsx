@@ -30,6 +30,8 @@ function NotificationDropdown() {
     );
   };
 
+  const hasNotifications = notifications.length > 0;
+
   useEffect(() => {
     const fetchAndSetNotifications = async () => {
       if (currentUser) {
@@ -45,8 +47,8 @@ function NotificationDropdown() {
       <div>
         <NotificationsIcon
           className={`h-6 w-6 cursor-pointer ${
-            open ? "text-cyan-400" : "text-black"
-          }`}
+            hasNotifications ? "text-cyan-400" : "text-black"
+          } ${open ? "ring-2 ring-cyan-400" : ""}`}
           onClick={handleOpen}
         />
       </div>
