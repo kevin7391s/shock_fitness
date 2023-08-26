@@ -71,6 +71,7 @@ function NotificationDropdown() {
                       senderId={notification.senderId}
                       receiverId={notification.receiverId}
                       notificationId={notification.id}
+                      onNotificationRemoved={handleNotificationRemoval}
                     />
                   </div>
                 )}
