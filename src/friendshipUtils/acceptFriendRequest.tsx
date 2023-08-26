@@ -12,12 +12,14 @@ interface Props {
   senderId: string;
   receiverId: string;
   notificationId: string;
+  onNotificationRemoved: (id: string) => void;
 }
 
 const AcceptFriendRequest: React.FC<Props> = ({
   senderId,
   receiverId,
   notificationId,
+  onNotificationRemoved,
 }) => {
   const handleAccept = async () => {
     // Get references to the friendship document and both user documents
@@ -43,9 +45,12 @@ const AcceptFriendRequest: React.FC<Props> = ({
       pendingRequests: arrayRemove(senderId),
     });
 
-    // Here, delete notification
+    //  delete notification
     const notificationRef = doc(firestore, "notifications", notificationId);
     await deleteDoc(notificationRef);
+
+    // update local state to remove notificaiton
+    onNotificationRemoved(notificationId);
   };
 
   return (
