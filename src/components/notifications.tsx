@@ -24,6 +24,12 @@ function NotificationDropdown() {
     setOpen(!open);
   };
 
+  const handleNotificationRemoval = (notificationId: string) => {
+    setNotifications((prevNotifications) =>
+      prevNotifications.filter((notif) => notif.id !== notificationId)
+    );
+  };
+
   useEffect(() => {
     const fetchAndSetNotifications = async () => {
       if (currentUser) {
@@ -59,11 +65,13 @@ function NotificationDropdown() {
                       senderId={notification.senderId}
                       receiverId={notification.receiverId}
                       notificationId={notification.id}
+                      onNotificationRemoved={handleNotificationRemoval}
                     />
                     <DeclineFriendRequest
                       senderId={notification.senderId}
                       receiverId={notification.receiverId}
                       notificationId={notification.id}
+                      onNotificationRemoved={handleNotificationRemoval}
                     />
                   </div>
                 )}
