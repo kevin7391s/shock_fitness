@@ -1,19 +1,59 @@
+import React, { useState, useEffect } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { firestore } from "../lib/firebase.js";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
-import React from "react";
+import { auth } from "../lib/firebase.js";
 
-function friends() {
+function Friends() {
+  type Friend = {
+    username: string;
+    // Add other properties as needed.
+  };
+  const [friends, setFriends] = useState<Friend[]>([]);
+
+  useEffect(() => {
+    const currentUserID = auth.currentUser?.uid;
+
+    const fetchFriends = async () => {
+      const userDoc = await getDoc(doc(firestore, "users", currentUserID));
+
+      if (userDoc.exists() && Array.isArray(userDoc.data()?.friends)) {
+        const friendsIDs = userDoc.data()?.friends;
+
+        const friendsData = await Promise.all(
+          friendsIDs.map(async (id: string) => {
+            const friendDoc = await getDoc(doc(firestore, "users", id));
+            return friendDoc.data() as Friend;
+          })
+        );
+
+        setFriends(friendsData);
+      }
+    };
+
+    fetchFriends();
+  }, []);
+
   return (
-    <div>
-      <div
-        className="flex flex-col items-center justify-center min-h-screen bg-black text-white"
-        style={{ backgroundColor: "#121212" }}
-      >
-        <NavBar />
-        <Footer />
-      </div>
+    <div className="flex flex-col min-h-screen bg-black text-white">
+      <NavBar />
+      <main className="flex flex-col items-center justify-center flex-1 w-full px-20">
+        <h1 className="text-3xl font-semibold mb-6">My Friends</h1>
+        <div className="flex flex-wrap justify-center">
+          {friends.map((friend, index) => (
+            <div
+              key={index} // Use the index if ID isn't available, or use another unique identifier.
+              className="friend-card m-4 p-6 border border-gray-500 rounded-lg w-64 h-40 flex flex-col items-center justify-center text-white"
+            >
+              {friend.username}
+            </div>
+          ))}
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }
 
-export default friends;
+export default Friends;
