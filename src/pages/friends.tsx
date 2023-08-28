@@ -3,6 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "../lib/firebase.js";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Image from "next/image";
 
 import { UserContext } from "@/context/userContext";
 
