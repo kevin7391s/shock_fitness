@@ -42,7 +42,10 @@ function Friends() {
   }, [currentUser]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white">
+    <div
+      className="flex flex-col min-h-screen bg-black text-white"
+      style={{ backgroundColor: "#121212" }}
+    >
       <NavBar />
 
       <main className="flex flex-col mt-32 items-center flex-1 w-full px-20">
