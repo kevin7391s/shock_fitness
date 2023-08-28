@@ -12,6 +12,7 @@ import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { UserContext } from "@/context/userContext";
 import { addFriend } from "@/friendshipUtils/addFriend";
+import Image from "next/image.js";
 
 interface User {
   username: string;
@@ -71,7 +72,15 @@ function Search() {
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
-      <div className="mt-24 ml-10">
+      <div className="flex flex-col items-center mt-32">
+        <Image
+          src="/images/search.png"
+          alt="Fitness App Logo"
+          width={200}
+          height={100}
+        />
+      </div>
+      <div className="flex flex-col items-center">
         <form onSubmit={handleSearch}>
           <input
             type="text"
