@@ -44,8 +44,14 @@ function Friends() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       <NavBar />
+
       <main className="flex flex-col mt-32 items-center flex-1 w-full px-20">
-        <h1 className="text-3xl font-semibold mb-6">My Friends</h1>
+        <Image
+          src="/images/friends.png"
+          alt="Fitness App Logo"
+          width={200}
+          height={100}
+        />
         <div className="flex flex-wrap justify-center">
           {friends.map((friend, index) => (
             <div
