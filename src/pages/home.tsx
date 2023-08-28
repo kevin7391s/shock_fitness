@@ -10,24 +10,24 @@ function home() {
     {
       image: "/images/heartlogo.png",
       text: "",
-      type: "Cardio",
+      type: "Add Workout",
     },
     {
       image: "/images/boxingman.jpg",
       text: "This is some overlay text.",
-      type: "Cardio",
+      type: "Add Workout",
     },
   ];
   const cardData2 = [
     {
       image: "/images/weightTraining.png",
       text: "",
-      type: "Weight training",
+      type: "View Workouts",
     },
     {
       image: "/images/weightlifting.jpg",
       text: "This is some overlay text.",
-      type: "Weight training",
+      type: "View Workouts",
     },
   ];
   const cardData3 = [
