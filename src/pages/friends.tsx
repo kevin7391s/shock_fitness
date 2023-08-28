@@ -48,18 +48,18 @@ function Friends() {
     >
       <NavBar />
 
-      <main className="flex flex-col mt-32 items-center flex-1 w-full px-20">
+      <main className="flex flex-col mt-32 items-center flex-1 w-full px-20 ">
         <Image
           src="/images/friends.png"
           alt="Fitness App Logo"
           width={200}
           height={100}
         />
-        <div className="flex flex-wrap justify-center">
+        <div className="grid grid-cols-2 justify-center mt-10">
           {friends.map((friend, index) => (
             <div
               key={index} // Use the index if ID isn't available, or use another unique identifier.
-              className="friend-card m-4 p-6 border border-gray-500 rounded-lg w-32 h-8 flex flex-col items-center justify-center text-white"
+              className="friend-card m-4 p-5 border border-2 border-black shadow-md rounded-lg w-32 h-4 flex flex-col items-center justify-center text-black bg-gradient-to-r from-gray-200 via-cyan-500 to-cyan-600"
             >
               {friend.username}
             </div>
