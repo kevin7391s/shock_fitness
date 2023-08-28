@@ -29,7 +29,7 @@ export default function Card({ cardData }: CardProps) {
       <Image
         src={cardData[cardState].image}
         alt="Card Image"
-        className="mt-5 mb-10"
+        className="mt-5 mb-10 rounded-full"
         width={100}
         height={100}
         onClick={handleClick}
