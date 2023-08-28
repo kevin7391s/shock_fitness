@@ -10,24 +10,24 @@ function home() {
     {
       image: "/images/heartlogo.png",
       text: "",
-      type: "Cardio",
+      type: "Add Workout",
     },
     {
       image: "/images/boxingman.jpg",
       text: "This is some overlay text.",
-      type: "Cardio",
+      type: "Add Workout",
     },
   ];
   const cardData2 = [
     {
       image: "/images/weightTraining.png",
       text: "",
-      type: "Weight training",
+      type: "View Workouts",
     },
     {
       image: "/images/weightlifting.jpg",
       text: "This is some overlay text.",
-      type: "Weight training",
+      type: "View Workouts",
     },
   ];
   const cardData3 = [
@@ -63,16 +63,16 @@ function home() {
           href="/addWorkout"
           className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8  "
         >
-          Add Cardio
+          Add Workout
         </Link>
         <div className="static mt-7 text-center items-center">
           <Card cardData={cardData2} />
         </div>
         <Link
-          href="/addWorkout"
+          href="/viewWorkouts"
           className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-8 "
         >
-          Add weight training
+          View Workouts
         </Link>
         <div className="static mt-7 text-center items-center">
           <Card cardData={cardData3} />
@@ -81,7 +81,7 @@ function home() {
           href="/profile"
           className="bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded mt-7 mb-36 "
         >
-          Go to profile!!
+          Go to profile
         </Link>
       </div>
       <Footer />
