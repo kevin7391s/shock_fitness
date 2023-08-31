@@ -49,13 +49,7 @@ function home() {
     >
       <div className="flex flex-col items-center flex-grow w-full">
         <NavBar />
-        <Image
-          src="/images/shockfitnesstransparent.png"
-          alt="Fitness App Logo"
-          className="relative top-10 mt-10 ml-5"
-          width={800}
-          height={100}
-        />
+
         <div className="static mt-5 text-center items-center">
           <Card cardData={cardData1} />
         </div>
