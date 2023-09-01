@@ -59,7 +59,7 @@ function Friends() {
           {friends.map((friend, index) => (
             <div
               key={index} // Use the index if ID isn't available, or use another unique identifier.
-              className="friend-card m-4 p-5 border border-2 border-black shadow-md rounded-lg w-64 h-12 flex flex-col  justify-center text-black bg-gray-600"
+              className="friend-card m-4 p-5 border border-1 border-cyan-400 shadow-md rounded-lg w-80 h-12 flex flex-col  justify-center text-white bg-gray-600"
             >
               {friend.username}
             </div>
