@@ -63,8 +63,8 @@ function Friends() {
               className="friend-card m-4 p-5 border border-1 border-cyan-400 shadow-md rounded-lg w-80 h-12 flex flex-row justify-between items-center text-white bg-gray-600"
             >
               <span>{friend.username}</span>
-              <Link href="/path-to-your-destination">
-                <div className="bg-cyan-400 hover:bg-cyan-500 text-black px-4 py-1 rounded">
+              <Link href="/underConstruction">
+                <div className="bg-cyan-400 hover:bg-cyan-500 text-sm text-black px-2 py-1 rounded">
                   View Profile
                 </div>
               </Link>
