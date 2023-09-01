@@ -4,6 +4,7 @@ import { firestore } from "../lib/firebase.js";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Image from "next/image";
+import Link from "next/link.js";
 
 import { UserContext } from "@/context/userContext";
 
@@ -58,10 +59,15 @@ function Friends() {
         <div className="grid grid-cols-1 justify-center mt-10">
           {friends.map((friend, index) => (
             <div
-              key={index} // Use the index if ID isn't available, or use another unique identifier.
-              className="friend-card m-4 p-5 border border-1 border-cyan-400 shadow-md rounded-lg w-80 h-12 flex flex-col  justify-center text-white bg-gray-600"
+              key={index}
+              className="friend-card m-4 p-5 border border-1 border-cyan-400 shadow-md rounded-lg w-80 h-12 flex flex-row justify-between items-center text-white bg-gray-600"
             >
-              {friend.username}
+              <span>{friend.username}</span>
+              <Link href="/path-to-your-destination">
+                <div className="bg-cyan-400 hover:bg-cyan-500 text-black px-4 py-1 rounded">
+                  View Profile
+                </div>
+              </Link>
             </div>
           ))}
         </div>
