@@ -14,25 +14,16 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## PROJECT NAME
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Shock Fitness
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Shock Fitness is a web application where you can log in and record your workouts. You can record cardio or weighlifting workout and view them for a later use. This app keeps track of how many workouts you have entered on your profile. You also now have the ability to search/add friends. When you are friends with another user, you can view their submitted workouts also.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## USAGE
 
-## Learn More
+When you start the app you will be taken to the landing page, from the landing page click on the register button. Create your account and click submit, then log in with the credentials you used to make your account. After that you may view your profile, enter workouts, view workouts, search for friends, add friends. When you add a workout, you will get a different form for cardio and weightlifting, once you hit submit the workout is added to your account. If you send a friend request to a user they will get a notification and that must be accepted before you are friends.
 
-To learn more about Next.js, take a look at the following resources:
+## CREDITS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Next.JS, React, Tailwind CSS, Firebase, React-hook-form (assisting with add Workout form)
