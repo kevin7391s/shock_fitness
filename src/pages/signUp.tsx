@@ -135,7 +135,7 @@ function signUp() {
             value={password}
           />
 
-          <p className="ml-4 text-sm text-white mb-1 ">Height</p>
+          <p className="ml-4 text-sm text-white mb-1 ">Height (inches)</p>
           <input
             aria-label="Enter your height"
             type="number"
@@ -146,7 +146,7 @@ function signUp() {
             value={height}
           />
 
-          <p className="ml-4 text-sm text-white mb-1 ">Weight</p>
+          <p className="ml-4 text-sm text-white mb-1 ">Weight (pounds)</p>
           <input
             aria-label="Enter your weight"
             type="number"
