@@ -14,9 +14,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## PROJECT NAME
-
-Shock Fitness
+## Shock Fitness
 
 Shock Fitness is a web application where you can log in and record your workouts. You can record cardio or weighlifting workout and view them for a later use. This app keeps track of how many workouts you have entered on your profile. You also now have the ability to search/add friends. When you are friends with another user, you can view their submitted workouts also.
 
