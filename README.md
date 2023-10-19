@@ -40,7 +40,7 @@ When you start the app you will be taken to the landing page, from the landing p
 
 ## View Workouts
 
-![Screenshot of ViewWorkouts Page](./public/images/screenshots/VieWorkouts.png)
+![Screenshot of ViewWorkouts Page](./public/images/screenshots/ViewWorkouts.png)
 
 ## Profile
 
