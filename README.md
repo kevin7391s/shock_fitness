@@ -28,23 +28,23 @@ When you start the app you will be taken to the landing page, from the landing p
 
 ## Register Page
 
-![Screenshot of Landing Page](./public/images/screenshots/register.png)
+![Screenshot of Register Page](./public/images/screenshots/register.png)
 
 ## Home Page
 
-![Screenshot of Landing Page](./public/images/screenshots/Home.png)
+![Screenshot of Home Page](./public/images/screenshots/Home.png)
 
 ## Add Workout
 
-![Screenshot of Landing Page](./public/images/screenshot/AddWorkout.png)
+![Screenshot of AddWorkout Page](./public/images/screenshots/AddWorkout.png)
 
 ## View Workouts
 
-![Screenshot of Landing Page](./public/images/screenshots/Vieworkouts.png)
+![Screenshot of ViewWorkouts Page](./public/images/screenshots/VieWorkouts.png)
 
 ## Profile
 
-![Screenshot of Landing Page](./public/images/screenshots/Profile.png)
+![Screenshot of Profile Page](./public/images/screenshots/Profile.png)
 
 ## CREDITS
 
