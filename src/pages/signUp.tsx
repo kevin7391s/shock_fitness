@@ -71,7 +71,7 @@ function signUp() {
   return (
     <div className="flex flex-col items-center h-screen bg-black ">
       <div
-        className=" flex flex-col   relative w-3/5 h-4/5 mx-auto  overflow-hidden bg-gray-200  rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20"
+        className=" flex flex-col   relative w-3/5 h-3.5/5 mx-auto  overflow-hidden bg-gray-200  rounded-lg shadow-lg cursor-pointer mt-20"
         style={{ backgroundColor: "#424242" }}
       >
         <div className="flex flex-col items-center">
@@ -167,7 +167,7 @@ function signUp() {
         </form>
         <Link
           href="/landingPage"
-          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 "
+          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 mb-5"
         >
           Back
         </Link>

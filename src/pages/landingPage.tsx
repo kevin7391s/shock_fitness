@@ -16,10 +16,7 @@ const LandingPage = () => {
       <Head>
         <title>Fitness App</title>
       </Head>
-      <div
-        className="flex flex-col items-center justify-center min-h-screen bg-black"
-        style={{ backgroundColor: "#121212" }}
-      >
+      <div className="flex flex-col items-center justify-center min-h-screen bg-black">
         <div className="ml-9">
           <Image
             src="/images/shockfitnesstransparent.png"
