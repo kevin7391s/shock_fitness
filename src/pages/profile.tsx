@@ -72,7 +72,7 @@ function Profile() {
       style={{ backgroundColor: "#121212" }}
     >
       <NavBar />
-      <div className="flex flex-col items-center justify-center flex-grow mb-20">
+      <div className="flex flex-col items-center justify-center flex-grow mb-10">
         <Image
           src="/images/profile.png"
           alt="Fitness App Logo"
@@ -85,12 +85,7 @@ function Profile() {
           <img src="/images/exerciseMan.jpg" alt="Profile picture" />
         </div>
         <h2 className="text-2xl mb-10 mt-5">{username}</h2>
-        <Link
-          href="/ChangeProfile"
-          className="flex flex-col items-center mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
-        >
-          Change Profile
-        </Link>
+
         <div className="grid grid-cols-2 gap-4">
           <div
             className="p-4 bg-gray-800 rounded shadow-lg"
@@ -132,6 +127,12 @@ function Profile() {
           className="flex flex-col items-center mt-10 mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
         >
           View past workouts
+        </Link>
+        <Link
+          href="/ChangeProfile"
+          className="flex flex-col items-center mb-10 bg-cyan-300 hover:bg-cyan-400 text-black font-bold py-2 px-4 rounded"
+        >
+          Edit Profile
         </Link>
       </div>
       <Footer />

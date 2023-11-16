@@ -56,15 +56,16 @@ function Friends() {
           width={200}
           height={100}
         />
-        <div className="grid grid-cols-1 justify-center mt-10">
+        <div className="grid grid-cols-1 justify-center mt-10 mb-24">
           {friends.map((friend, index) => (
             <div
               key={index}
-              className="friend-card m-4 p-5 border border-1 border-cyan-400 shadow-md rounded-lg w-80 h-12 flex flex-row justify-between items-center text-white bg-gray-600"
+              className="friend-card m-4 p-5  shadow-md rounded-lg w-80 h-12 flex flex-row justify-between items-center text-white bg-gray-600 mb-5"
+              style={{ backgroundColor: "#333333" }}
             >
               <span>{friend.username}</span>
               <Link href="/underConstruction">
-                <div className="bg-cyan-400 hover:bg-cyan-500 text-sm text-black px-2 py-1 rounded">
+                <div className="bg-gray-500 hover:bg-cyan-500 text-sm text-black px-1 py-1 rounded">
                   View Profile
                 </div>
               </Link>
