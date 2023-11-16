@@ -20,8 +20,8 @@ export default function Card({ cardData }: CardProps) {
 
   return (
     <div
-      className="flex flex-col items-center relative w-64 h-80 mx-auto  overflow-hidden bg-gray-200 justify-center rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer  "
-      style={{ backgroundColor: "#424242" }}
+      className="flex flex-col items-center relative w-64 h-80 mx-auto  overflow-hidden bg-gray-200 justify-center rounded-md shadow-lg cursor-pointer  "
+      style={{ backgroundColor: "#333333" }}
     >
       <p className="text-2xl content-start mb-10 text-white ">
         {cardData[cardState].type}
