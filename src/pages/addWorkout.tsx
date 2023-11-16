@@ -174,6 +174,8 @@ to manage a form */
                       Select cardio type
                     </option>
                     <option value="running">Running</option>
+                    <option value="walking">Walking</option>
+                    <option value="jump rope">Jump Rope</option>
                     <option value="biking">Biking</option>
                     <option value="swimming">Swimming</option>
                     {/* Add other cardio types as needed */}
@@ -240,6 +242,10 @@ to manage a form */
                     <option value="deadlift">Deadlift</option>
                     <option value="squat">Squat</option>
                     <option value="shoulder press">Shoulder Press</option>
+                    <option value="dumbell curls">Dumbell curls</option>
+                    <option value="tricep extensions">Tricep Extensions</option>
+                    <option value="pullups">Pull ups</option>
+                    <option value="lunges">Weighted Lunges</option>
                     {/* Add other weightlifting types as needed */}
                   </select>
                 </div>

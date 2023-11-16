@@ -43,7 +43,7 @@ function ChangeProfile() {
     >
       <NavBar />
       <div className="flex flex-col items-center justify-center flex-grow mb-20">
-        <h2 className="text-2xl mb-10 mt-5">Change Profile</h2>
+        <h2 className="text-2xl mb-10 mt-5">Edit Profile</h2>
         <div className="mb-4">
           <label className="block text-white mb-2">Username: </label>
           <input

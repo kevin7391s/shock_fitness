@@ -25,7 +25,7 @@ function Footer() {
       }}
       showLabels
       className="fixed bottom-0 w-full h-20"
-      style={{ backgroundColor: "#424242" }}
+      style={{ backgroundColor: "#333333" }}
     >
       <BottomNavigationAction
         style={iconStyle}

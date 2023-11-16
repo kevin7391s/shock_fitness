@@ -56,7 +56,9 @@ function NotificationDropdown() {
       {open && (
         <div className="origin-top-right absolute right-0 mt-2 w-64 sm:w-96 rounded-md shadow-lg bg-gray-800">
           {notifications.length === 0 ? (
-            <p className="mt-5 ml-5 text-lg text-white">No new notifications</p>
+            <p className="mt-5 ml-5 text-lg text-white flex items-center h-full mb-4 ">
+              No new notifications
+            </p>
           ) : (
             notifications.map((notification, index) => (
               <div className="mt-5 ml-5 text-lg text-white" key={index}>

@@ -72,9 +72,7 @@ function signUp() {
     <div className="flex flex-col items-center h-screen bg-black ">
       <div
         className=" flex flex-col   relative w-3/5 h-3.5/5 mx-auto  overflow-hidden bg-gray-200  rounded-lg shadow-lg cursor-pointer mt-20"
-
         style={{ backgroundColor: "#333333" }}
-
       >
         <div className="flex flex-col items-center">
           <Image
@@ -95,7 +93,7 @@ function signUp() {
             aria-label="Enter your Username"
             type="text"
             placeholder="Enter Username"
-            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4 "
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary border-blue-300 bg-blue-100 rounded mb-4 "
             name="username"
             onChange={({ target }) => setUsername(target.value)}
             value={username}
@@ -106,7 +104,7 @@ function signUp() {
             aria-label="Enter your name"
             type="text"
             placeholder="Enter name"
-            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary border-blue-300 bg-blue-100 rounded mb-4"
             name="fullname"
             onChange={({ target }) => setFullname(target.value)}
             value={fullname}
@@ -117,7 +115,7 @@ function signUp() {
             aria-label="Enter your Email"
             type="email"
             placeholder="Enter Email"
-            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary  border-blue-300 bg-blue-100 rounded mb-4"
             name="email"
             onChange={({ target }) => setEmail(target.value)}
             value={email}
@@ -128,7 +126,7 @@ function signUp() {
             aria-label="Enter your password"
             type="password"
             placeholder="Enter Password"
-            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary border-blue-300 bg-blue-100 rounded mb-4"
             name="password"
             onChange={({ target }) => setPassword(target.value)}
             value={password}
@@ -139,7 +137,7 @@ function signUp() {
             aria-label="Enter your height"
             type="number"
             placeholder="Enter height"
-            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary border-blue-300 bg-blue-100 rounded mb-4"
             name="height"
             onChange={({ target }) => setHeight(+target.value)}
             value={height}
@@ -150,7 +148,7 @@ function signUp() {
             aria-label="Enter your weight"
             type="number"
             placeholder="Enter weight"
-            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary border-blue-300 bg-blue-100 rounded mb-4"
             name="weight"
             onChange={({ target }) => setWeight(+target.value)}
             value={weight}
