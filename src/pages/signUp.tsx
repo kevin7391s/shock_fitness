@@ -74,8 +74,8 @@ function signUp() {
       style={{ backgroundColor: "#121212" }}
     >
       <div
-        className=" flex flex-col   relative w-4/5 h-4/5 mx-auto  overflow-hidden bg-gray-200  rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20"
-        style={{ backgroundColor: "#424242" }}
+        className=" flex flex-col   relative w-3/5 h-3.5/5 mx-auto  overflow-hidden bg-gray-200  rounded-lg shadow-lg cursor-pointer mt-20"
+        style={{ backgroundColor: "#333333" }}
       >
         <div className="flex flex-col items-center">
           <Image
