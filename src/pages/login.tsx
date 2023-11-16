@@ -23,7 +23,7 @@ function Login() {
       router.push("/home");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setError(error.message);
+        setError("Invalid Login");
       } else {
         setError("An unknown error occurred");
       }
@@ -32,7 +32,7 @@ function Login() {
   return (
     <div className="flex flex-col items-center h-screen bg-black">
       <div
-        className="flex flex-col relative w-3/5 h-3/5 mx-auto overflow-hidden bg-gray-200 rounded-lg shadow-lg cursor-pointer mt-20"
+        className="flex flex-col relative w-3/5 h-2.5/5 mx-auto overflow-hidden bg-gray-200 rounded-lg shadow-lg cursor-pointer mt-20"
         style={{ backgroundColor: "#333333" }}
       >
         <div className="flex flex-col items-center">
@@ -82,7 +82,7 @@ function Login() {
         </form>
         <Link
           href="/signUp"
-          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 mb-24 "
+          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 mb-36 "
         >
           Not a member? Sign up here
         </Link>
