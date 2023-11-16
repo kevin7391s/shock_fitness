@@ -32,10 +32,8 @@ function Login() {
   return (
     <div className="flex flex-col items-center h-screen bg-black">
       <div
-
-        className="flex flex-col relative w-3/5 h-3/5 mx-auto overflow-hidden bg-gray-200 rounded-lg border-2 border-gray-600 shadow-lg cursor-pointer mt-20"
+        className="flex flex-col relative w-3/5 h-3/5 mx-auto overflow-hidden bg-gray-200 rounded-lg shadow-lg cursor-pointer mt-20"
         style={{ backgroundColor: "#333333" }}
-
       >
         <div className="flex flex-col items-center">
           <Image
@@ -55,7 +53,7 @@ function Login() {
             aria-label="Enter your Email"
             type="text"
             placeholder="Enter Email"
-            className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary border-blue-300 bg-blue-100 rounded mb-4"
             name="username"
             onChange={({ target }) => setEmail(target.value)}
             value={email}
@@ -65,7 +63,7 @@ function Login() {
             aria-label="Enter your password"
             type="password"
             placeholder="Enter Password"
-            className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            className="text-sm text-gray-base w-full py-5 px-1 h-2 border border-gray-primary rounded mb-4border-blue-300 bg-blue-100"
             name="password"
             onChange={({ target }) => setPassword(target.value)}
             value={password}
