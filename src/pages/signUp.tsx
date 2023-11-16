@@ -69,34 +69,33 @@ function signUp() {
 
   // return the form and input fields
   return (
-    <div
-      className="flex flex-col items-center h-screen bg-black "
-      style={{ backgroundColor: "#121212" }}
-    >
+    <div className="flex flex-col items-center h-screen bg-black ">
       <div
         className=" flex flex-col   relative w-3/5 h-3.5/5 mx-auto  overflow-hidden bg-gray-200  rounded-lg shadow-lg cursor-pointer mt-20"
+
         style={{ backgroundColor: "#333333" }}
+
       >
         <div className="flex flex-col items-center">
           <Image
             src="/images/register.png"
             alt="Fitness App Logo"
-            className="mb-10 mt-10"
-            width={200}
-            height={40}
+            className="mb-5 mt-10"
+            width={240}
+            height={80}
             priority={true}
           />
         </div>
         {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
         <div className="relative"></div>
 
-        <form onSubmit={handleSignup} method="POST" className="ml-3 mr-3">
+        <form onSubmit={handleSignup} method="POST" className="ml-5 mr-5 ">
           <p className="ml-4 text-sm text-white mb-1 ">Username</p>
           <input
             aria-label="Enter your Username"
             type="text"
             placeholder="Enter Username"
-            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4"
+            className="text-sm text-gray-base w-full  py-5 px-1 h-2 border border-gray-primary rounded mb-4 "
             name="username"
             onChange={({ target }) => setUsername(target.value)}
             value={username}
@@ -170,7 +169,7 @@ function signUp() {
         </form>
         <Link
           href="/landingPage"
-          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 "
+          className="flex flex-col items-center text-white hover:text-cyan-300 text-md mt-5 mb-10"
         >
           Back
         </Link>
